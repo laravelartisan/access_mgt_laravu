@@ -1,0 +1,6 @@
+//Logic Custom gradients
+
+@mixin logic-gradient($firstColor,$firstPercent,$secondColor,$secondPercent,$thirdColor,$thirdpercent,$position,$repeat){
+  background-image: linear-gradient(to  $position, $firstColor $firstPercent, $secondColor $secondPercent, $thirdColor $thirdpercent);
+  background-repeat: $repeat;
+}

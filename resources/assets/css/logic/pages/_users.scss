@@ -1,0 +1,6 @@
+.user-create{
+  .card{
+    background-color: transparent;
+    @include logic-gradient(#c2dcff, 0%, #ffffff, 10%, #c2dcff, 96%,top,no-repeat);
+  }
+}

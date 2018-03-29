@@ -1,0 +1,43 @@
+.three-column{
+  @include logic-gradient(#c2dcff, 0%, #ffffff, 10%, #c2dcff, 96%,top,no-repeat);
+  .card-footer{
+    text-align: center;
+  }
+  label{
+    font-family: helvetica, arial, sans-serif;
+    color: #2A456F;
+    font-size:12px;
+    font-weight: bold;
+    width: 130px;
+  }
+  .col-1{
+    max-width: 13%;
+  }
+  .col-3{
+    max-width: 20%;
+  }
+  .tax-box:hover, .tax-box:focus, .tax-box:active{
+    @include logic-gradient(rgb(136,170,214), 7%, rgb(255,255,255), 10%, rgb(136,170,214), 96%,bottom,no-repeat);
+    border: 1px solid #00A6FE;
+  }
+
+  .upload-btn {
+    border: 1px solid #ced4da;
+    color: #000000;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+    width: 198px;
+  }
+  input[type=file] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+  }
+  .required:after {
+    content:"*";
+    color:red;
+  }
+}

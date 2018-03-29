@@ -1,0 +1,29 @@
+.logic-login{
+  cursor: pointer;
+}
+.logic-btn-default{
+  cursor: pointer;
+  @include logic-gradient(#88aad6, 7%, #c2dcff, 10%, #88aad6, 96%,bottom,repeat);
+  color: #171717;
+  font-size: 13px;
+  font-weight: bold;
+  border-radius: 10px;
+  width: 80px;
+}
+.logic-btn-default:hover{
+  border-top: 1px solid #0000ff;
+  @include logic-gradient(#c2dcff, 7%, #c2dcff, 10%, #c2dcff, 96%,bottom,repeat);
+}
+.logic-btn-disabled {
+  cursor: pointer;
+  @include logic-gradient(#f1f1f1, 7%, #ffffff, 10%, #f1f1f1, 96%,bottom,repeat);
+  color: #999999;
+  font-size: 13px;
+  font-weight: bold;
+  border-radius: 10px;
+  width: 80px;
+}
+.logic-btn-disabled:hover{
+  color: #000000;
+  border-top: 1px solid #0000ff;
+}

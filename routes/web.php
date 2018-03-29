@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,7 +9,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
+# Vue
+Route::any('{all}', function () {
+//dd($d2->diff($d1)->s);
+    return view('index');
+})
+    ->where(['all' => '.*']);

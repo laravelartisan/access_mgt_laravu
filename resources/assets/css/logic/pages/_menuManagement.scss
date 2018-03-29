@@ -1,0 +1,11 @@
+.menu-management{
+  label{
+    font-size: 12px;
+  }
+  .menu-action ,.new-menu{
+    padding: 0px;
+  }
+  .card{
+    @include logic-gradient(#c2dcff, 0%, #ffffff, 10%, #c2dcff, 96%,top,no-repeat);
+  }
+}

@@ -1,0 +1,58 @@
+.platform-header{
+	justify-content: flex-start;
+}
+.navbar-toggler{
+	line-height: 2;
+}
+.show-user{
+    justify-content: center;
+}
+.user-create{
+    justify-content: center;
+    .form-group {
+    margin-bottom: 3px;
+    }
+    .col-md-2{
+        max-width: 14.667%;
+    }
+    .card-footer{
+        text-align: center;
+    }
+    label{
+        font-family: helvetica, arial, sans-serif;
+        color: #2A456F;
+        font-size:12px;
+        font-weight: bold;
+    }
+}
+.order-entry{
+    .form-group {
+        margin-bottom: 3px;
+    }
+    .card-footer{
+        text-align: center;
+    }
+    .logic-custom-md-1{
+        padding-left: 0px;
+    }
+    .logic-custom-md-2{
+        padding-right:0px
+    }
+    label{
+        font-family: helvetica, arial, sans-serif;
+        color: #2A456F;
+        font-size:12px;
+        font-weight: bold;
+    }
+
+}
+.input-danger{
+    border-color: #dc3545 ;
+}
+
+
+
+
+
+
+
