@@ -1,20 +1,24 @@
 webpackJsonp([9],{
 
-/***/ 574:
+/***/ 580:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(605)
+}
 var normalizeComponent = __webpack_require__(5)
 /* script */
-var __vue_script__ = __webpack_require__(625)
+var __vue_script__ = __webpack_require__(607)
 /* template */
-var __vue_template__ = __webpack_require__(626)
+var __vue_template__ = __webpack_require__(608)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-2150d0b4"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -25,7 +29,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\src\\views\\admin\\Settings.vue"
+Component.options.__file = "resources\\assets\\src\\widgets\\buttons\\InsertButtons.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34,9 +38,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-67af3b3a", Component.options)
+    hotAPI.createRecord("data-v-2150d0b4", Component.options)
   } else {
-    hotAPI.reload("data-v-67af3b3a", Component.options)
+    hotAPI.reload("data-v-2150d0b4", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -48,7 +52,49 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 625:
+/***/ 605:
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(606);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(8)("1924cb08", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2150d0b4\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./InsertButtons.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2150d0b4\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./InsertButtons.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
+/***/ 606:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(7)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ 607:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57,6 +103,8 @@ module.exports = Component.exports
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; //
 //
 //
 //
@@ -67,467 +115,120 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
+var _vuex = __webpack_require__(224);
 
 exports.default = {
+    props: ['model', 'refreshData'],
+    computed: _extends({}, (0, _vuex.mapState)({
+        isDisabled: function isDisabled(state) {
+            return state.button.isDisabled;
+        }
+    })),
     data: function data() {
-        return {
-            inputFields: [{
-                marks: '123',
-                name: 'logic',
-                location: 'dhaka'
-            }],
-            list: {
-                settings: []
-            }
-        };
+        return {};
     },
+
     methods: {
-        sendSpecialCharacters: function sendSpecialCharacters() {
+        refresh: function refresh(event) {
             var _this = this;
 
-            axios.post('/settings', [{
-                marks: "Raja@Zakaria_+#kk$%PP",
-                name: "Raja@Zakaria_+#kk$%PP",
-                location: "Raja@Zakaria_+#kk$%PP"
-            }, {
-                marks: "Raja@Zakaria_+#kk$%PP",
-                name: "Raja@Zakaria_+#kk$%PP",
-                location: "Raja@Zakaria_+#kk$%PP"
-            }, {
-                marks: "Raja@Zakaria_+#kk$%PP",
-                name: "Raja@Zakaria_+#kk$%PP",
-                location: "Raja@Zakaria_+#kk$%PP"
-            }, {
-                marks: "Raja''@Zakaria_+#kk$%PP",
-                name: "Raja@Zakaria_+#kk$%PP",
-                location: "Raja@Zakaria_+#kk$%PP"
-            }, {
-                marks: "Raja@Zakaria_+#kk$%PP",
-                name: "Raja@Zakaria_+#kk$%PP",
-                location: "Raja@Zakaria_+#kk$%PP"
-            }, {
-                marks: "Raja@Zakaria_+#kk$%PP",
-                name: "Raja@Zakaria_+#kk$%PP",
-                location: "Raja@Zakaria_+#kk$%PP"
-            }, {
-                marks: "Raja@Zakaria_+#kk$%PP",
-                name: "Raja@Zakaria_+#kk$%PP",
-                location: "Raja@Zakaria_+#kk$%PP"
-            }, {
-                marks: "Raja@Zakaria_+#kk$%PP",
-                name: "Raja@Zakaria_+#kk$%PP",
-                location: "Raja@Zakaria_+#kk$%PP"
-            }]).then(function (response) {
-                _this.users = response.data.data;
-                console.log(_this.users);
-            }).catch(function (error) {
-                console.log(error.response.data.error);
-            });
-        },
-        addField: function addField(index) {
-            /* for(let i=0; i<=1000;i++){
-                 this.inputFields.push({
-                     marks:'123'+index+i,
-                     name:'logic'+index+i,
-                     location:'dhaka'+index+i
-                 })
-             }*/
-            this.inputFields.push({
-                marks: '123' + index,
-                name: 'logic' + index,
-                location: 'dhaka' + index
-            });
-        },
-        removeField: function removeField(index) {
-            this.inputFields.splice(index, 1);
-        },
-        orderSubmit: function orderSubmit() {
-            axios.post('/settings', this.inputFields).then(function (response) {
-                console.log(response);
-            });
-        }
-    },
-    created: function created() {
-        var _this2 = this;
+            event.stopPropagation();
+            var condition = true;
 
-        axios.get('/settings').then(function (response) {
-            _this2.list.settings = response.data.data;
-            //this.search.menus = this.list.menusList;
-            console.log(_this2.list.settings);
-        }).catch(function (error) {
-            console.log(error);
-        });
+            var _loop = function _loop(field) {
+                if (_this.refreshData.conditionalFields && _this.refreshData.conditionalFields.length) {
+                    _this.refreshData.conditionalFields.forEach(function (noRefreshField) {
+                        condition &= field !== noRefreshField;
+                    });
+                }
+                if (condition) {
+                    //this.$store.dispatch('getButtonStatus');
+                    console.log(_this.model[field]);
+                    _this.model[field] = '';
+                }
+            };
 
-        //            var spc = encodeURIComponent("Raja@Z;'a&'&&karia_+#kk$%PP");
-        axios.get('/settings', {
-            params: {
-                spc: "Raja@Z;'a&'&&karia_+#kk$%PP",
-                spc1: "Raja@Zakaria_+#kk$%PP",
-                spc2: "Raja@Zakaria_+#kk$%PP",
-                spc3: "Raja@Zakaria_+#kk$%PP",
-                spc4: "Raja@Zakaria_+#kk$%PP",
-                spc5: "Raja@Zakaria_+#kk$%PP",
-                spc6: "Raja@Zakaria_+#kk$%PP",
-                spc7: "Raja@Zakaria_+#kk$%PP",
-                spc8: "Raja@Zakaria_+#kk$%PP",
-                spc9: "Raja@Zakaria_+#kk$%PP",
-                spc10: "Raja''@Zakaria_+#kk$%PP",
-                spc11: "Raja@Zakaria_+#kk$%PP",
-                spc12: "Raja@Zakaria_+#kk$%PP",
-                spc13: "Raja@Zakaria_+#kk$%PP",
-                spc14: "Raja@Zakaria_+#kk$%PP",
-                spc15: "Raja@Zakaria_+#kk$%PP",
-                spc16: "Raja@Zakaria_+#kk$%PP",
-                spc17: "Raja@Zakaria_+#kk$%PP",
-                spc18: "Raja@Zakaria_+#kk$%PP",
-                spc19: "Raja@Zakaria_+#kk$%PP",
-                spc20: "Raja@Zakaria_+#kk$%PP",
-                spc21: "Raja@Zakaria_+#kk$%PP",
-                spc22: "Raja@Zakaria_+#kk$%PP",
-                spc23: "Raja@Zakaria_+#kk$%PP",
-                spc24: "Raja@Zakaria_+#kk$%PP"
+            for (var field in this.model) {
+                _loop(field);
             }
-        }).then(function (response) {
-            _this2.users = response.data.data;
-            console.log(_this2.users);
-        }).catch(function (error) {
-            console.log(error.response.data.error);
-        });
+            return false;
+        }
     }
 };
 
 /***/ }),
 
-/***/ 626:
+/***/ 608:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("main", { staticClass: "main" }, [
-    _c("div", { staticClass: "order-entry container" }, [
-      _c("div", { staticClass: "col-lg-12" }, [
-        _c("div", { staticClass: "card" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c(
-            "form",
-            {
-              staticClass: "form-group",
-              attrs: { action: "", method: "post" },
-              on: {
-                submit: function($event) {
-                  $event.preventDefault()
-                  return _vm.orderSubmit($event)
-                }
-              }
-            },
-            [
-              _c(
-                "div",
-                { staticClass: "card-body" },
-                _vm._l(_vm.inputFields, function(field, index) {
-                  return _c(
-                    "div",
-                    { staticClass: "form-group row" },
-                    [
-                      _vm._l(field, function(input, order) {
-                        return _c("div", { staticClass: "col-md-3" }, [
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.inputFields[index][order],
-                                expression: "inputFields[index][order]"
-                              }
-                            ],
-                            staticClass: "form-control form-control-sm",
-                            attrs: { type: "text" },
-                            domProps: { value: _vm.inputFields[index][order] },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.inputFields[index],
-                                  order,
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          })
-                        ])
-                      }),
-                      _vm._v(" "),
-                      index == _vm.inputFields.length - 1
-                        ? _c(
-                            "div",
-                            {
-                              staticClass: "btn col-md-1",
-                              staticStyle: { cursor: "pointer" },
-                              on: {
-                                click: function($event) {
-                                  _vm.addField(index)
-                                }
-                              }
-                            },
-                            [_c("i", { staticClass: "fa fa-plus" })]
-                          )
-                        : _vm._e(),
-                      _vm._v(" "),
-                      index == _vm.inputFields.length - 1 && index > 0
-                        ? _c(
-                            "div",
-                            {
-                              staticClass: "btn col-md-1",
-                              staticStyle: { cursor: "pointer" },
-                              on: {
-                                click: function($event) {
-                                  _vm.removeField(index)
-                                }
-                              }
-                            },
-                            [_c("i", { staticClass: "fa fa-minus" })]
-                          )
-                        : _vm._e(),
-                      _vm._v(" "),
-                      index > 0 && index < _vm.inputFields.length - 1
-                        ? _c(
-                            "div",
-                            {
-                              staticClass: "btn col-md-1",
-                              staticStyle: { cursor: "pointer" },
-                              on: {
-                                click: function($event) {
-                                  _vm.removeField(index)
-                                }
-                              }
-                            },
-                            [_c("i", { staticClass: "fa fa-minus" })]
-                          )
-                        : _vm._e()
-                    ],
-                    2
-                  )
-                })
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-footer" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-sm btn-primary",
-                    attrs: { type: "submit" }
-                  },
-                  [_vm._v("Save")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-sm btn-primary",
-                    attrs: { type: "submit" },
-                    on: {
-                      click: function($event) {
-                        $event.preventDefault()
-                        return _vm.sendSpecialCharacters($event)
-                      }
-                    }
-                  },
-                  [_vm._v("spc")]
-                )
-              ])
-            ]
-          )
-        ])
-      ])
-    ]),
+  return _c("div", { staticClass: "card-footer" }, [
+    _vm.isDisabled
+      ? _c(
+          "button",
+          {
+            staticClass: "btn btn-sm btn-default logic-btn-disabled",
+            class: { disabled: _vm.isDisabled },
+            attrs: { type: "submit", disabled: "" }
+          },
+          [_vm._v(" Save")]
+        )
+      : _c(
+          "button",
+          {
+            staticClass: "btn btn-sm btn-default logic-btn-default",
+            class: { disabled: _vm.isDisabled },
+            attrs: { type: "submit" }
+          },
+          [_vm._v("Save")]
+        ),
     _vm._v(" "),
-    _c("div", { staticClass: "show-user container" }, [
-      _c("div", { staticClass: "col-lg-12" }, [
-        _c("div", { staticClass: "card" }, [
-          _vm._m(1),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-block" }, [
-            _c(
-              "table",
-              {
-                staticClass:
-                  "table table-responsive table-bordered table-striped table-sm"
-              },
-              [
-                _vm._m(2),
-                _vm._v(" "),
-                _c(
-                  "tbody",
-                  [
-                    _vm._l(_vm.list.settings, function(setting, index) {
-                      return _c("tr", [
-                        _c("td", [
-                          _vm._v(
-                            "\n                                    " +
-                              _vm._s(index + 1) +
-                              "\n                                "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _vm._v(
-                            "\n                                    " +
-                              _vm._s(setting.marks) +
-                              "\n                                "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _vm._v(
-                            "\n                                    " +
-                              _vm._s(setting.name) +
-                              "\n                                "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _vm._v(
-                            "\n                                    " +
-                              _vm._s(setting.location) +
-                              "\n                                "
-                          )
-                        ])
-                      ])
-                    })
-                  ],
-                  2
-                )
-              ]
-            )
-          ])
-        ])
-      ])
-    ])
+    _c(
+      "button",
+      {
+        staticClass: "btn btn-sm btn-default logic-btn-disabled",
+        class: { disabled: !_vm.isDisabled },
+        attrs: { type: "button" }
+      },
+      [_vm._v("Update")]
+    ),
+    _vm._v(" "),
+    _c(
+      "button",
+      {
+        staticClass: "btn btn-sm btn-default logic-btn-disabled",
+        class: { disabled: !_vm.isDisabled },
+        attrs: { type: "submit" }
+      },
+      [_vm._v("Delete")]
+    ),
+    _vm._v(" "),
+    _c(
+      "button",
+      {
+        staticClass: "btn btn-sm btn-default logic-btn-default",
+        attrs: { type: "button" },
+        on: {
+          click: function($event) {
+            _vm.refresh($event)
+          }
+        }
+      },
+      [_vm._v("Refresh")]
+    )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _vm._v("\n                    Order Entry\n                    "),
-      _c("small", [_vm._v("(Garments Order Entry)")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("div", [
-        _c("i", { staticClass: "fa fa-align-justify" }),
-        _vm._v("Information")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("SL#")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Number")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Company")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Location")])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-67af3b3a", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-2150d0b4", module.exports)
   }
 }
 

@@ -6,4 +6,5 @@ export default (to, from, next) => {
   } else {
     return next()
   }*/
+  return next();
 }

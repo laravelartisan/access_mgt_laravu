@@ -77,7 +77,7 @@
             }
         },
         created: function () {
-            this.$store.dispatch('login/clearLoginErrors');
+//            this.$store.dispatch('login/clearLoginErrors');
         },
 
         methods: {

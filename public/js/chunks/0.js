@@ -1,14 +1,14 @@
 webpackJsonp([0],{
 
-/***/ 583:
+/***/ 569:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(5)
 /* script */
-var __vue_script__ = __webpack_require__(674)
+var __vue_script__ = __webpack_require__(598)
 /* template */
-var __vue_template__ = __webpack_require__(675)
+var __vue_template__ = __webpack_require__(609)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\src\\views\\admin\\UserManagement.vue"
+Component.options.__file = "resources\\assets\\src\\views\\admin\\Dashboard.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-91863676", Component.options)
+    hotAPI.createRecord("data-v-e9a345e6", Component.options)
   } else {
-    hotAPI.reload("data-v-91863676", Component.options)
+    hotAPI.reload("data-v-e9a345e6", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -48,7 +48,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 587:
+/***/ 577:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60,7 +60,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _utils = __webpack_require__(588);
+var _utils = __webpack_require__(578);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -734,7 +734,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 588:
+/***/ 578:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -770,7 +770,7 @@ function deepClone(obj) {
 
 /***/ }),
 
-/***/ 589:
+/***/ 579:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -887,7 +887,275 @@ exports.default = {
 
 /***/ }),
 
-/***/ 591:
+/***/ 598:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+//    import Multiselect from 'vue-multiselect'
+
+
+var _vuex = __webpack_require__(224);
+
+var _vueMultiselect = __webpack_require__(599);
+
+var _vueMultiselect2 = _interopRequireDefault(_vueMultiselect);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+    components: {
+        'tree': function tree() {
+            return __webpack_require__.e/* import() */(8/* duplicate */).then(__webpack_require__.bind(null, 576));
+        },
+        'insert-button-group': function insertButtonGroup() {
+            return __webpack_require__.e/* import() */(9/* duplicate */).then(__webpack_require__.bind(null, 580));
+        },
+        Multiselect: _vueMultiselect2.default
+    },
+    computed: _extends({}, (0, _vuex.mapState)({
+        roles: function roles(state) {
+            return state.login.roles;
+        },
+        authenticated: function authenticated(state) {
+            return state.login.authenticated;
+        }
+    })),
+    data: function data() {
+        return {
+            selected: null,
+            options: [{ name: 'Vue.js', language: 'JavaScript' }, { name: 'Rails', language: 'Ruby' }, { name: 'Laravel', language: 'PHP' }, { name: 'Phoenix', language: 'Elixir' }]
+        };
+    },
+    methods: {
+        selectedValue: function selectedValue() {
+            /*alert('zakaria');*/
+        },
+        userSubmit: function userSubmit() {
+            console.log(this.selected);
+        },
+        selectAll: function selectAll(selectedOptions) {
+            this.selected = selectedOptions;
+        }
+
+    }
+};
+
+/***/ }),
+
+/***/ 599:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -898,19 +1166,19 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.deepClone = exports.pointerMixin = exports.multiselectMixin = exports.Multiselect = undefined;
 
-var _Multiselect = __webpack_require__(592);
+var _Multiselect = __webpack_require__(600);
 
 var _Multiselect2 = _interopRequireDefault(_Multiselect);
 
-var _multiselectMixin = __webpack_require__(587);
+var _multiselectMixin = __webpack_require__(577);
 
 var _multiselectMixin2 = _interopRequireDefault(_multiselectMixin);
 
-var _pointerMixin = __webpack_require__(589);
+var _pointerMixin = __webpack_require__(579);
 
 var _pointerMixin2 = _interopRequireDefault(_pointerMixin);
 
-var _utils = __webpack_require__(588);
+var _utils = __webpack_require__(578);
 
 var _utils2 = _interopRequireDefault(_utils);
 
@@ -924,19 +1192,19 @@ exports.deepClone = _utils2.default;
 
 /***/ }),
 
-/***/ 592:
+/***/ 600:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(593)
+  __webpack_require__(601)
 }
 var normalizeComponent = __webpack_require__(5)
 /* script */
-var __vue_script__ = __webpack_require__(595)
+var __vue_script__ = __webpack_require__(603)
 /* template */
-var __vue_template__ = __webpack_require__(596)
+var __vue_template__ = __webpack_require__(604)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -976,13 +1244,13 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 593:
+/***/ 601:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(594);
+var content = __webpack_require__(602);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -1003,7 +1271,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 594:
+/***/ 602:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(7)(false);
@@ -1018,7 +1286,7 @@ exports.push([module.i, "\nfieldset[disabled] .multiselect {\n    pointer-events
 
 /***/ }),
 
-/***/ 595:
+/***/ 603:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1028,11 +1296,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _multiselectMixin = __webpack_require__(587);
+var _multiselectMixin = __webpack_require__(577);
 
 var _multiselectMixin2 = _interopRequireDefault(_multiselectMixin);
 
-var _pointerMixin = __webpack_require__(589);
+var _pointerMixin = __webpack_require__(579);
 
 var _pointerMixin2 = _interopRequireDefault(_pointerMixin);
 
@@ -1318,7 +1586,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 596:
+/***/ 604:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -1852,275 +2120,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 674:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-//    import Multiselect from 'vue-multiselect'
-
-
-var _vuex = __webpack_require__(224);
-
-var _vueMultiselect = __webpack_require__(591);
-
-var _vueMultiselect2 = _interopRequireDefault(_vueMultiselect);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-    components: {
-        'tree': function tree() {
-            return __webpack_require__.e/* import() */(16/* duplicate */).then(__webpack_require__.bind(null, 590));
-        },
-        'insert-button-group': function insertButtonGroup() {
-            return __webpack_require__.e/* import() */(15/* duplicate */).then(__webpack_require__.bind(null, 586));
-        },
-        Multiselect: _vueMultiselect2.default
-    },
-    computed: _extends({}, (0, _vuex.mapState)({
-        roles: function roles(state) {
-            return state.login.roles;
-        },
-        authenticated: function authenticated(state) {
-            return state.login.authenticated;
-        }
-    })),
-    data: function data() {
-        return {
-            selected: null,
-            options: [{ name: 'Vue.js', language: 'JavaScript' }, { name: 'Rails', language: 'Ruby' }, { name: 'Laravel', language: 'PHP' }, { name: 'Phoenix', language: 'Elixir' }]
-        };
-    },
-    methods: {
-        selectedValue: function selectedValue() {
-            /*alert('zakaria');*/
-        },
-        userSubmit: function userSubmit() {
-            console.log(this.selected);
-        },
-        selectAll: function selectAll(selectedOptions) {
-            this.selected = selectedOptions;
-        }
-
-    }
-};
-
-/***/ }),
-
-/***/ 675:
+/***/ 609:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -2131,7 +2131,14 @@ var render = function() {
     _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "col-lg-12" }, [
         _c("div", { staticClass: "card three-column" }, [
-          _vm._m(0),
+          _c("div", { staticClass: "card-header" }, [
+            _vm._v(
+              "\n                    Three Column " +
+                _vm._s(_vm.authenticated) +
+                "\n                    "
+            ),
+            _c("small", [_vm._v("(3 column form)")])
+          ]),
           _vm._v(" "),
           _c(
             "form",
@@ -2147,12 +2154,12 @@ var render = function() {
             },
             [
               _c("div", { staticClass: "card-body" }, [
+                _vm._m(0),
+                _vm._v(" "),
                 _vm._m(1),
                 _vm._v(" "),
-                _vm._m(2),
-                _vm._v(" "),
                 _c("div", { staticClass: "form-row" }, [
-                  _vm._m(3),
+                  _vm._m(2),
                   _vm._v(" "),
                   _c(
                     "div",
@@ -2184,22 +2191,22 @@ var render = function() {
                     1
                   ),
                   _vm._v(" "),
+                  _vm._m(3),
+                  _vm._v(" "),
                   _vm._m(4),
                   _vm._v(" "),
                   _vm._m(5),
                   _vm._v(" "),
-                  _vm._m(6),
-                  _vm._v(" "),
-                  _vm._m(7)
+                  _vm._m(6)
                 ]),
+                _vm._v(" "),
+                _vm._m(7),
                 _vm._v(" "),
                 _vm._m(8),
                 _vm._v(" "),
                 _vm._m(9),
                 _vm._v(" "),
-                _vm._m(10),
-                _vm._v(" "),
-                _vm._m(11)
+                _vm._m(10)
               ]),
               _vm._v(" "),
               _c("insert-button-group")
@@ -2212,15 +2219,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _vm._v("\n                    Three Column\n                    "),
-      _c("small", [_vm._v("(3 column form)")])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -2554,7 +2552,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-91863676", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-e9a345e6", module.exports)
   }
 }
 

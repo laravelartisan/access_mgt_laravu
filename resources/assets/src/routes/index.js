@@ -14,6 +14,7 @@ Vue.use(Router)
 const routeMiddleware = resolveMiddleware(
     require.context('./middleware', false, /.*\.js$/)
 )
+//console.log(routeMiddleware);
 const router = make()
 
 sync(store, router)
@@ -74,7 +75,7 @@ function beforeEnter (route) {
         if (!Array.isArray(route.middleware)) {
             route.middleware = [route.middleware]
         }
-        console.log( route.middleware);
+        //console.log( route.middleware);
         route.middleware.forEach(middleware => {
             if( Array.isArray(middleware)){
                 middleware.forEach(aMiddleware => {
@@ -154,13 +155,8 @@ function scrollBehavior (to, from, savedPosition) {
  */
 function resolveMiddleware (requireContext) {
     //console.log(requireContext.keys());
-    return requireContext.keys()
-        .map(file =>
-            [file.replace(/(^.\/)|(\.js$)/g, ''), requireContext(file)]
-    )
-        .reduce((guards, [name, guard]) => (
-        { ...guards, [name]: guard.default }
-        ), {})
+    return requireContext.keys().map(file =>[file.replace(/(^.\/)|(\.js$)/g, ''), requireContext(file)])
+        .reduce((guards, [name, guard]) => ({ ...guards, [name]: guard.default }), {})
 }
 
 /*globalRouter.beforeEach((to, from, next) => {

@@ -1,24 +1,20 @@
 webpackJsonp([4],{
 
-/***/ 581:
+/***/ 571:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(647)
-}
 var normalizeComponent = __webpack_require__(5)
 /* script */
-var __vue_script__ = __webpack_require__(649)
+var __vue_script__ = __webpack_require__(614)
 /* template */
-var __vue_template__ = __webpack_require__(669)
+var __vue_template__ = __webpack_require__(615)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = injectStyle
+var __vue_styles__ = null
 /* scopeId */
-var __vue_scopeId__ = "data-v-052206ae"
+var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -29,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\src\\views\\admin\\PreCosting.vue"
+Component.options.__file = "resources\\assets\\src\\views\\admin\\Settings.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -38,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-052206ae", Component.options)
+    hotAPI.createRecord("data-v-67af3b3a", Component.options)
   } else {
-    hotAPI.reload("data-v-052206ae", Component.options)
+    hotAPI.reload("data-v-67af3b3a", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -52,49 +48,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 647:
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(648);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(8)("0043bd80", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-052206ae\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PreCosting.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-052206ae\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PreCosting.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-
-/***/ 648:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(7)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.modal-content[data-v-052206ae] {\n  min-height: 450px;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ 649:
+/***/ 614:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -103,8 +57,6 @@ exports.push([module.i, "\n.modal-content[data-v-052206ae] {\n  min-height: 450p
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; //
 //
 //
 //
@@ -189,330 +141,348 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-var _vuex = __webpack_require__(224);
 
 exports.default = {
-    components: {
-        'pre-costing': function preCosting() {
-            return __webpack_require__.e/* import() */(20).then(__webpack_require__.bind(null, 650));
+    data: function data() {
+        return {
+            inputFields: [{
+                marks: '123',
+                name: 'logic',
+                location: 'dhaka'
+            }],
+            list: {
+                settings: []
+            }
+        };
+    },
+    methods: {
+        sendSpecialCharacters: function sendSpecialCharacters() {
+            var _this = this;
+
+            axios.post('/settings', [{
+                marks: "Raja@Zakaria_+#kk$%PP",
+                name: "Raja@Zakaria_+#kk$%PP",
+                location: "Raja@Zakaria_+#kk$%PP"
+            }, {
+                marks: "Raja@Zakaria_+#kk$%PP",
+                name: "Raja@Zakaria_+#kk$%PP",
+                location: "Raja@Zakaria_+#kk$%PP"
+            }, {
+                marks: "Raja@Zakaria_+#kk$%PP",
+                name: "Raja@Zakaria_+#kk$%PP",
+                location: "Raja@Zakaria_+#kk$%PP"
+            }, {
+                marks: "Raja''@Zakaria_+#kk$%PP",
+                name: "Raja@Zakaria_+#kk$%PP",
+                location: "Raja@Zakaria_+#kk$%PP"
+            }, {
+                marks: "Raja@Zakaria_+#kk$%PP",
+                name: "Raja@Zakaria_+#kk$%PP",
+                location: "Raja@Zakaria_+#kk$%PP"
+            }, {
+                marks: "Raja@Zakaria_+#kk$%PP",
+                name: "Raja@Zakaria_+#kk$%PP",
+                location: "Raja@Zakaria_+#kk$%PP"
+            }, {
+                marks: "Raja@Zakaria_+#kk$%PP",
+                name: "Raja@Zakaria_+#kk$%PP",
+                location: "Raja@Zakaria_+#kk$%PP"
+            }, {
+                marks: "Raja@Zakaria_+#kk$%PP",
+                name: "Raja@Zakaria_+#kk$%PP",
+                location: "Raja@Zakaria_+#kk$%PP"
+            }]).then(function (response) {
+                _this.users = response.data.data;
+                console.log(_this.users);
+            }).catch(function (error) {
+                console.log(error.response.data.error);
+            });
         },
-        'insert-button-group': function insertButtonGroup() {
-            return __webpack_require__.e/* import() */(15/* duplicate */).then(__webpack_require__.bind(null, 586));
+        addField: function addField(index) {
+            /* for(let i=0; i<=1000;i++){
+                 this.inputFields.push({
+                     marks:'123'+index+i,
+                     name:'logic'+index+i,
+                     location:'dhaka'+index+i
+                 })
+             }*/
+            this.inputFields.push({
+                marks: '123' + index,
+                name: 'logic' + index,
+                location: 'dhaka' + index
+            });
         },
-        'fabric-cost': function fabricCost() {
-            return __webpack_require__.e/* import() */(19).then(__webpack_require__.bind(null, 655));
+        removeField: function removeField(index) {
+            this.inputFields.splice(index, 1);
         },
-        'job-search': function jobSearch() {
-            return __webpack_require__.e/* import() */(17/* duplicate */).then(__webpack_require__.bind(null, 597));
+        orderSubmit: function orderSubmit() {
+            axios.post('/settings', this.inputFields).then(function (response) {
+                console.log(response);
+            });
         }
     },
-    computed: _extends({}, (0, _vuex.mapState)({
-        fabricBudget: function fabricBudget(state) {
-            return state.precosting.fabricBudget;
-        }
-    }))
+    created: function created() {
+        var _this2 = this;
 
+        axios.get('/settings').then(function (response) {
+            _this2.list.settings = response.data.data;
+            //this.search.menus = this.list.menusList;
+            console.log(_this2.list.settings);
+        }).catch(function (error) {
+            console.log(error);
+        });
+
+        //            var spc = encodeURIComponent("Raja@Z;'a&'&&karia_+#kk$%PP");
+        axios.get('/settings', {
+            params: {
+                spc: "Raja@Z;'a&'&&karia_+#kk$%PP",
+                spc1: "Raja@Zakaria_+#kk$%PP",
+                spc2: "Raja@Zakaria_+#kk$%PP",
+                spc3: "Raja@Zakaria_+#kk$%PP",
+                spc4: "Raja@Zakaria_+#kk$%PP",
+                spc5: "Raja@Zakaria_+#kk$%PP",
+                spc6: "Raja@Zakaria_+#kk$%PP",
+                spc7: "Raja@Zakaria_+#kk$%PP",
+                spc8: "Raja@Zakaria_+#kk$%PP",
+                spc9: "Raja@Zakaria_+#kk$%PP",
+                spc10: "Raja''@Zakaria_+#kk$%PP",
+                spc11: "Raja@Zakaria_+#kk$%PP",
+                spc12: "Raja@Zakaria_+#kk$%PP",
+                spc13: "Raja@Zakaria_+#kk$%PP",
+                spc14: "Raja@Zakaria_+#kk$%PP",
+                spc15: "Raja@Zakaria_+#kk$%PP",
+                spc16: "Raja@Zakaria_+#kk$%PP",
+                spc17: "Raja@Zakaria_+#kk$%PP",
+                spc18: "Raja@Zakaria_+#kk$%PP",
+                spc19: "Raja@Zakaria_+#kk$%PP",
+                spc20: "Raja@Zakaria_+#kk$%PP",
+                spc21: "Raja@Zakaria_+#kk$%PP",
+                spc22: "Raja@Zakaria_+#kk$%PP",
+                spc23: "Raja@Zakaria_+#kk$%PP",
+                spc24: "Raja@Zakaria_+#kk$%PP"
+            }
+        }).then(function (response) {
+            _this2.users = response.data.data;
+            console.log(_this2.users);
+        }).catch(function (error) {
+            console.log(error.response.data.error);
+        });
+    }
 };
 
 /***/ }),
 
-/***/ 669:
+/***/ 615:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "main",
-    { staticClass: "main" },
-    [
-      _c("div", { staticClass: "logic-form row" }, [
-        _c("div", { staticClass: "col-lg-12" }, [
-          _c("div", { staticClass: "card" }, [
-            _vm._m(0),
-            _vm._v(" "),
+  return _c("main", { staticClass: "main" }, [
+    _c("div", { staticClass: "order-entry container" }, [
+      _c("div", { staticClass: "col-lg-12" }, [
+        _c("div", { staticClass: "card" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "form",
+            {
+              staticClass: "form-group",
+              attrs: { action: "", method: "post" },
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.orderSubmit($event)
+                }
+              }
+            },
+            [
+              _c(
+                "div",
+                { staticClass: "card-body" },
+                _vm._l(_vm.inputFields, function(field, index) {
+                  return _c(
+                    "div",
+                    { staticClass: "form-group row" },
+                    [
+                      _vm._l(field, function(input, order) {
+                        return _c("div", { staticClass: "col-md-3" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.inputFields[index][order],
+                                expression: "inputFields[index][order]"
+                              }
+                            ],
+                            staticClass: "form-control form-control-sm",
+                            attrs: { type: "text" },
+                            domProps: { value: _vm.inputFields[index][order] },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.inputFields[index],
+                                  order,
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ])
+                      }),
+                      _vm._v(" "),
+                      index == _vm.inputFields.length - 1
+                        ? _c(
+                            "div",
+                            {
+                              staticClass: "btn col-md-1",
+                              staticStyle: { cursor: "pointer" },
+                              on: {
+                                click: function($event) {
+                                  _vm.addField(index)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-plus" })]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      index == _vm.inputFields.length - 1 && index > 0
+                        ? _c(
+                            "div",
+                            {
+                              staticClass: "btn col-md-1",
+                              staticStyle: { cursor: "pointer" },
+                              on: {
+                                click: function($event) {
+                                  _vm.removeField(index)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-minus" })]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      index > 0 && index < _vm.inputFields.length - 1
+                        ? _c(
+                            "div",
+                            {
+                              staticClass: "btn col-md-1",
+                              staticStyle: { cursor: "pointer" },
+                              on: {
+                                click: function($event) {
+                                  _vm.removeField(index)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-minus" })]
+                          )
+                        : _vm._e()
+                    ],
+                    2
+                  )
+                })
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-sm btn-primary",
+                    attrs: { type: "submit" }
+                  },
+                  [_vm._v("Save")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-sm btn-primary",
+                    attrs: { type: "submit" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.sendSpecialCharacters($event)
+                      }
+                    }
+                  },
+                  [_vm._v("spc")]
+                )
+              ])
+            ]
+          )
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "show-user container" }, [
+      _c("div", { staticClass: "col-lg-12" }, [
+        _c("div", { staticClass: "card" }, [
+          _vm._m(1),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-block" }, [
             _c(
-              "form",
+              "table",
               {
-                staticClass: "form-group",
-                attrs: { action: "", method: "post" }
+                staticClass:
+                  "table table-responsive table-bordered table-striped table-sm"
               },
               [
-                _c("div", { staticClass: "card-body" }, [
-                  _c("div", { staticClass: "form-group row" }, [
-                    _vm._m(1),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-md-2" }, [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "b-modal",
-                            rawName: "v-b-modal.jobSearch",
-                            modifiers: { jobSearch: true }
-                          }
-                        ],
-                        staticClass: "form-control form-control-sm",
-                        attrs: { type: "text", placeholder: "Job No" }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(2),
-                    _vm._v(" "),
-                    _vm._m(3),
-                    _vm._v(" "),
-                    _vm._m(4),
-                    _vm._v(" "),
-                    _vm._m(5),
-                    _vm._v(" "),
-                    _vm._m(6),
-                    _vm._v(" "),
-                    _vm._m(7)
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(8),
-                  _vm._v(" "),
-                  _vm._m(9),
-                  _vm._v(" "),
-                  _vm._m(10),
-                  _vm._v(" "),
-                  _vm._m(11),
-                  _vm._v(" "),
-                  _vm._m(12),
-                  _vm._v(" "),
-                  _vm._m(13),
-                  _vm._v(" "),
-                  _vm._m(14)
-                ]),
+                _vm._m(2),
                 _vm._v(" "),
-                _c("insert-button-group")
-              ],
-              1
+                _c(
+                  "tbody",
+                  [
+                    _vm._l(_vm.list.settings, function(setting, index) {
+                      return _c("tr", [
+                        _c("td", [
+                          _vm._v(
+                            "\n                                    " +
+                              _vm._s(index + 1) +
+                              "\n                                "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            "\n                                    " +
+                              _vm._s(setting.marks) +
+                              "\n                                "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            "\n                                    " +
+                              _vm._s(setting.name) +
+                              "\n                                "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            "\n                                    " +
+                              _vm._s(setting.location) +
+                              "\n                                "
+                          )
+                        ])
+                      ])
+                    })
+                  ],
+                  2
+                )
+              ]
             )
           ])
         ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-3" }, [_c("pre-costing")], 1),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col-md-9" },
-          [_vm.fabricBudget ? _c("fabric-cost") : _vm._e()],
-          1
-        )
-      ]),
-      _vm._v(" "),
-      _c(
-        "b-modal",
-        {
-          attrs: {
-            id: "jobSearch",
-            size: "lg",
-            title: "Job Search",
-            "no-close-on-backdrop": "",
-            "no-close-on-esc": "",
-            "ok-only": ""
-          }
-        },
-        [_c("job-search")],
-        1
-      )
-    ],
-    1
-  )
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
@@ -520,439 +490,34 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
-      _vm._v("\n                    Pre-Costing\n                    "),
-      _c("small", [_vm._v("V2")])
+      _vm._v("\n                    Order Entry\n                    "),
+      _c("small", [_vm._v("(Garments Order Entry)")])
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-1" }, [
-      _c("label", { attrs: { for: "jobId" } }, [_vm._v("Job No")])
+    return _c("div", { staticClass: "card-header" }, [
+      _c("div", [
+        _c("i", { staticClass: "fa fa-align-justify" }),
+        _vm._v("Information")
+      ])
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-1" }, [
-      _c("label", { attrs: { for: "company" } }, [_vm._v("Company")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-2" }, [
-      _c("select", { staticClass: "form-control form-control-sm" }, [
-        _c("option", [_vm._v("Selecr Company")]),
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("SL#")]),
         _vm._v(" "),
-        _c("option", [_vm._v("Logic One")]),
+        _c("th", [_vm._v("Number")]),
         _vm._v(" "),
-        _c("option", [_vm._v("Logic Two")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-1" }, [
-      _c("label", { attrs: { for: "email" } }, [_vm._v("Quotation ID")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-2" }, [
-      _c("input", {
-        staticClass: "form-control form-control-sm",
-        attrs: { type: "text" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-1" }, [
-      _c("label", { attrs: { for: "email" } }, [_vm._v("Style Ref")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-2" }, [
-      _c("input", {
-        staticClass: "form-control form-control-sm",
-        attrs: { type: "text" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c("div", { staticClass: "col-md-1" }, [
-        _c("label", { attrs: { for: "buyer" } }, [_vm._v("Style Des.")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2" }, [
-        _c("textarea", { staticClass: "form-control form-control-sm" })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-1" }, [
-        _c("label", { attrs: { for: "email" } }, [_vm._v("Internal Ref")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2" }, [
-        _c("input", {
-          staticClass: "form-control form-control-sm",
-          attrs: { type: "text" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-1" }, [
-        _c("label", { attrs: { for: "email" } }, [_vm._v("Buyer")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2" }, [
-        _c("select", { staticClass: "form-control form-control-sm" }, [
-          _c("option", [_vm._v("Select")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("Logic One")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("Logic Two")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-1" }, [
-        _c("label", { attrs: { for: "email", title: "Style Description" } }, [
-          _vm._v("Prd. Dept.")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2" }, [
-        _c("select", { staticClass: "form-control form-control-sm" }, [
-          _c("option", [_vm._v("Select")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("Logic One")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("Logic Two")])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c("div", { staticClass: "col-md-1" }, [
-        _c("label", { attrs: { for: "Currency" } }, [_vm._v("Currency")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "logic-custom-md-1 col-md-1" }, [
-        _c("select", { staticClass: "form-control form-control-sm" }, [
-          _c("option", [_vm._v("Select")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("Logic One")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("Logic Two")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "logic-custom-md-11 col-md-1" }, [
-        _c("input", {
-          staticClass: "form-control form-control-sm",
-          attrs: { type: "text" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-1" }, [
-        _c("label", { attrs: { for: "Agent" } }, [_vm._v("Agent")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2" }, [
-        _c("select", { staticClass: "form-control form-control-sm" }, [
-          _c("option", [_vm._v("Select")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("Logic One")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("Logic Two")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-1" }, [
-        _c("label", { attrs: { for: "job qty" } }, [_vm._v("Job Qty.")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2" }, [
-        _c("input", {
-          staticClass: "form-control form-control-sm",
-          attrs: { type: "text" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-1" }, [
-        _c("label", { attrs: { for: "job qty" } }, [_vm._v("Order UOM")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2" }, [
-        _c("input", {
-          staticClass: "form-control form-control-sm",
-          attrs: { type: "text" }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c("div", { staticClass: "col-md-1" }, [
-        _c("label", { attrs: { for: "buyer" } }, [_vm._v("Costing Date")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2" }, [
-        _c("input", {
-          staticClass: "form-control form-control-sm",
-          attrs: { type: "text" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-1" }, [
-        _c("label", { attrs: { for: "email" } }, [_vm._v("Incoterm")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2" }, [
-        _c("input", {
-          staticClass: "form-control form-control-sm",
-          attrs: { type: "text" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-1" }, [
-        _c("label", { attrs: { for: "email" } }, [_vm._v("Incoterm Place")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2" }, [
-        _c("input", {
-          staticClass: "form-control form-control-sm",
-          attrs: { type: "text" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-1" }, [
-        _c("label", { attrs: { for: "email" } }, [_vm._v("Machine/Line")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2" }, [
-        _c("input", {
-          staticClass: "form-control form-control-sm",
-          attrs: { type: "text" }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c("div", { staticClass: "col-md-1" }, [
-        _c("label", { attrs: { for: "buyer" } }, [_vm._v("Prod/Line/Hr")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2" }, [
-        _c("input", {
-          staticClass: "form-control form-control-sm",
-          attrs: { type: "text" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-1" }, [
-        _c("label", { attrs: { for: "email" } }, [_vm._v("Costing Per")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2" }, [
-        _c("select", { staticClass: "form-control form-control-sm" }, [
-          _c("option", [_vm._v("Select Costing %")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("Logic One")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("Logic Two")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-1" }, [
-        _c("label", { attrs: { for: "Region" } }, [_vm._v("Region")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2" }, [
-        _c("select", { staticClass: "form-control form-control-sm" }, [
-          _c("option", [_vm._v("Select Region")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("Logic One")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("Logic Two")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-1" }, [
-        _c("label", { attrs: { for: "email" } }, [_vm._v("Approved")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2" }, [
-        _c("select", { staticClass: "form-control form-control-sm" }, [
-          _c("option", { attrs: { value: "1" } }, [_vm._v("Yes")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "0" } }, [_vm._v("No")])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c("div", { staticClass: "col-md-1" }, [
-        _c("label", { attrs: { for: "buyer" } }, [_vm._v("Sew. SMV")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2" }, [
-        _c("input", {
-          staticClass: "form-control form-control-sm",
-          attrs: { type: "text" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-1" }, [
-        _c("label", { attrs: { for: "email" } }, [_vm._v("Sew Eff %")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2" }, [
-        _c("input", {
-          staticClass: "form-control form-control-sm",
-          attrs: { type: "text" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-1" }, [
-        _c("label", { attrs: { for: "email" } }, [_vm._v("Cut. SMV")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2" }, [
-        _c("input", {
-          staticClass: "form-control form-control-sm",
-          attrs: { type: "text" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-1" }, [
-        _c("label", { attrs: { for: "email" } }, [_vm._v("Cut Eff %")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2" }, [
-        _c("input", {
-          staticClass: "form-control form-control-sm",
-          attrs: { type: "text" }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c("div", { staticClass: "col-md-1" }, [
-        _c("label", { attrs: { for: "buyer" } }, [_vm._v("Remarks")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2" }, [
-        _c("textarea", { staticClass: "form-control form-control-sm" })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-1" }, [
-        _c("label", { attrs: { for: "buyer" } }, [_vm._v("File no")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2" }, [
-        _c("input", {
-          staticClass: "form-control form-control-sm",
-          attrs: { type: "text" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-1" }, [
-        _c("label", { attrs: { for: "email" } }, [_vm._v("Images")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2" }, [
-        _c("input", {
-          staticClass: "form-control form-control-sm",
-          attrs: { type: "file" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-1" }, [
-        _c("label", { attrs: { for: "email" } })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2" }, [
-        _c("input", { attrs: { type: "button", value: "Pre Costing Copy" } })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c("div", { staticClass: "col-md-1" }, [
-        _c("label", { attrs: { for: "Ready To Approved" } }, [
-          _vm._v("Ready To Approved")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2" }, [
-        _c("select", { staticClass: "form-control form-control-sm" }, [
-          _c("option", { attrs: { value: "1" } }, [_vm._v("Yes")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "0" } }, [_vm._v("No")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-1" }, [
-        _c("label", { attrs: { for: "email" } }, [_vm._v("Budget Minuite")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2" }, [
-        _c("select", { staticClass: "form-control form-control-sm" }, [
-          _c("option", [_vm._v("Selecr Budget Minuite")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("Logic One")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("Logic Two")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-1" }, [
-        _c("label", { attrs: { for: "email" } }, [_vm._v("Copy From")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2" }, [
-        _c("input", {
-          staticClass: "form-control form-control-sm",
-          attrs: { type: "text" }
-        })
+        _c("th", [_vm._v("Company")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Location")])
       ])
     ])
   }
@@ -962,7 +527,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-052206ae", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-67af3b3a", module.exports)
   }
 }
 

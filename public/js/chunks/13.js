@@ -1,14 +1,14 @@
 webpackJsonp([13],{
 
-/***/ 571:
+/***/ 568:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(5)
 /* script */
-var __vue_script__ = __webpack_require__(598)
+var __vue_script__ = __webpack_require__(594)
 /* template */
-var __vue_template__ = __webpack_require__(614)
+var __vue_template__ = __webpack_require__(610)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -48,7 +48,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 598:
+/***/ 594:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74,13 +74,13 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
   components: {
     'logic-header': function logicHeader() {
-      return __webpack_require__.e/* import() */(22).then(__webpack_require__.bind(null, 599));
+      return __webpack_require__.e/* import() */(18).then(__webpack_require__.bind(null, 595));
     },
     'logicSidebar': function logicSidebar() {
-      return __webpack_require__.e/* import() */(18).then(__webpack_require__.bind(null, 602));
+      return __webpack_require__.e/* import() */(17).then(__webpack_require__.bind(null, 598));
     },
     'logicFooter': function logicFooter() {
-      return __webpack_require__.e/* import() */(23).then(__webpack_require__.bind(null, 611));
+      return __webpack_require__.e/* import() */(19).then(__webpack_require__.bind(null, 607));
     }
   },
 
@@ -90,7 +90,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 614:
+/***/ 610:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

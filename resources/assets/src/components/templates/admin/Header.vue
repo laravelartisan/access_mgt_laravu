@@ -16,9 +16,6 @@
               <router-link :to="{ name: 'settings' }" target="_self" class="nav-link" aria-disabled="false">Settings</router-link>
           </li>
           <li class="nav-item px-3">
-              <router-link :to="{ name: 'orderEntry' }" target="_self" class="nav-link" aria-disabled="false">Order</router-link>
-          </li>
-          <li class="nav-item px-3">
               <a href="javascript:void(0)" @click="logout" target="_self" class="nav-link" aria-disabled="false" >Logout</a>
           </li>
       </ul>

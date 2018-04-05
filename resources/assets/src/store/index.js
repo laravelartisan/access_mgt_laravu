@@ -16,7 +16,7 @@ const modules = requireContext.keys()
         }
         return { ...modules, [name]: module }
     }, {})
-console.log(modules);
+//console.log(modules);
 export default new Vuex.Store({
     plugins: [createPersistedState()],
     modules,

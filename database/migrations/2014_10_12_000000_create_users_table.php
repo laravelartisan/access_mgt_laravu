@@ -15,6 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('role_id')->unsigned();
             $table->string('user_code',6)->unique();
             $table->string('username')->unique();
             $table->string('first_name');
@@ -26,7 +27,7 @@ class CreateUsersTable extends Migration
 
             $table->rememberToken();
 
-            $table->index('user_code');
+            $table->index(['role_id', 'user_code']);
         });
     }
 
