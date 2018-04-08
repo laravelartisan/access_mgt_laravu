@@ -123,6 +123,7 @@ exports.default = {
 				role: 1,
 				status: ''
 			},
+			editMode: false,
 			list: {
 				userCode: '',
 				userName: '',
@@ -137,29 +138,49 @@ exports.default = {
 
 	methods: {
 		submitUser: function submitUser() {
-			alert();
-			axios.post('/users', this.form).then(function (response) {
 
-				/*this.users.push(response.data.data);
-    for(let field in this.form){
-    	this.form[field] = '';
-    }*/
+			this.editMode == false ? this.saveUser() : this.updateUser();
+		},
+
+		saveUser: function saveUser() {
+			var _this = this;
+
+			axios.post('/users', this.form).then(function (response) {
+				_this.users.push(response.data.data);
+				for (var field in _this.form) {
+					_this.form[field] = '';
+				}
 			}).catch(function (error) {
 				/*this.serverErrors = error.response.data.errors;
-    console.log(this.serverErrors);*/
+     console.log(this.serverErrors);*/
+			});
+		},
+
+		updateUser: function updateUser() {
+			var _this2 = this;
+
+			axios.post('/users/...', this.form).then(function (response) {
+				_this2.users.push(response.data.data);
+				for (var field in _this2.form) {
+					_this2.form[field] = '';
+				}
+			}).catch(function (error) {
+				/*this.serverErrors = error.response.data.errors;
+     console.log(this.serverErrors);*/
 			});
 		},
 
 		editUser: function editUser(user) {
 			console.log(user);
 			this.form = user;
+			this.editMode = true;
 		}
 	},
 	created: function created() {
-		var _this = this;
+		var _this3 = this;
 
 		axios.get('/users').then(function (response) {
-			_this.users = response.data.data;
+			_this3.users = response.data.data;
 		}).catch(function (error) {
 			console.log(error.response.data.error);
 		});
@@ -689,7 +710,7 @@ var render = function() {
                   "button",
                   {
                     staticClass: "btn btn-sm btn-default logic-btn-default",
-                    attrs: { type: "button" }
+                    attrs: { type: "submit" }
                   },
                   [_vm._v(" Update")]
                 ),
@@ -707,7 +728,7 @@ var render = function() {
                   "button",
                   {
                     staticClass: "btn btn-sm btn-default logic-btn-default",
-                    attrs: { type: "button" },
+                    attrs: { type: "reset" },
                     on: {
                       click: function($event) {
                         _vm.refresh($event)

@@ -27,6 +27,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    protected $casts = [
+        'role_id' => 'integer',
+        'status' => 'boolean'
+    ];
+
     public function role()
     {
         return $this->belongsTo(Role::class);

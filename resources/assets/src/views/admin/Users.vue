@@ -83,9 +83,9 @@
 								</div>
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-sm btn-default logic-btn-default" > Save</button>
-                                    <button type="button" class="btn btn-sm btn-default logic-btn-default" > Update</button>
+                                    <button type="submit" class="btn btn-sm btn-default logic-btn-default" > Update</button>
                                     <button type="submit" class="btn btn-sm btn-default logic-btn-default" >Delete</button>
-                                    <button type="button" class="btn btn-sm btn-default logic-btn-default" @click = "refresh($event)">Refresh</button>
+                                    <button type="reset" class="btn btn-sm btn-default logic-btn-default" @click = "refresh($event)">Refresh</button>
 
                                 </div>
   				        	</form>
@@ -174,6 +174,7 @@
 					role:1,
 					status:'',
 				},
+				editMode: false,
                 list:{
                     userCode: '',
                     userName: '',
@@ -188,22 +189,39 @@
 
         methods:{
 			submitUser: function(){
-                alert();
-						axios.post('/users', this.form).then( response => {
 
-							/*this.users.push(response.data.data);
-							for(let field in this.form){
-								this.form[field] = '';
-							}*/
-						}).catch( error => {
-							/*this.serverErrors = error.response.data.errors;
-							console.log(this.serverErrors);*/
-						});
+				this.editMode == false? this.saveUser(): this.updateUser();
+
             },
+
+			saveUser: function(){
+				axios.post('/users', this.form).then( response => {
+					this.users.push(response.data.data);
+					for(let field in this.form){
+						this.form[field] = '';
+					}
+				}).catch( error => {
+					/*this.serverErrors = error.response.data.errors;
+					 console.log(this.serverErrors);*/
+				});
+			},
+
+			updateUser: function(){
+				axios.post('/users/...', this.form).then( response => {
+					this.users.push(response.data.data);
+					for(let field in this.form){
+						this.form[field] = '';
+					}
+				}).catch( error => {
+					/*this.serverErrors = error.response.data.errors;
+					 console.log(this.serverErrors);*/
+				});
+			},
 
 			editUser:function(user){
 				console.log(user);
 				this.form = user;
+				this.editMode = true;
 			},
         },
         created:  function(){

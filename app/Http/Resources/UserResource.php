@@ -22,8 +22,8 @@ class UserResource extends Resource
             'email' => $this->email,
             'role' => isset($this->role)?$this->role:'N/A',
             'status' => $this->status,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'createdAt' => date_format($this->created_at, 'Y/m/d'),
+            'updatedAt' => date_format($this->updated_at, 'Y/m/d')
         ];
     }
 }

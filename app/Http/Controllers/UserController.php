@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\UserCollection;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -15,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return response()->json(['data'=> 5]);
+        return new UserCollection(User::all());
     }
 
     /**

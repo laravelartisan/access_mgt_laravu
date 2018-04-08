@@ -6,7 +6,7 @@ webpackJsonp([0],{
 var disposed = false
 var normalizeComponent = __webpack_require__(5)
 /* script */
-var __vue_script__ = __webpack_require__(598)
+var __vue_script__ = __webpack_require__(597)
 /* template */
 var __vue_template__ = __webpack_require__(609)
 /* template functional */
@@ -887,7 +887,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 598:
+/***/ 597:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1109,7 +1109,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _vuex = __webpack_require__(224);
 
-var _vueMultiselect = __webpack_require__(599);
+var _vueMultiselect = __webpack_require__(598);
 
 var _vueMultiselect2 = _interopRequireDefault(_vueMultiselect);
 
@@ -1121,7 +1121,7 @@ exports.default = {
             return __webpack_require__.e/* import() */(8/* duplicate */).then(__webpack_require__.bind(null, 576));
         },
         'insert-button-group': function insertButtonGroup() {
-            return __webpack_require__.e/* import() */(9/* duplicate */).then(__webpack_require__.bind(null, 580));
+            return __webpack_require__.e/* import() */(9).then(__webpack_require__.bind(null, 604));
         },
         Multiselect: _vueMultiselect2.default
     },
@@ -1155,7 +1155,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 599:
+/***/ 598:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1166,7 +1166,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.deepClone = exports.pointerMixin = exports.multiselectMixin = exports.Multiselect = undefined;
 
-var _Multiselect = __webpack_require__(600);
+var _Multiselect = __webpack_require__(599);
 
 var _Multiselect2 = _interopRequireDefault(_Multiselect);
 
@@ -1192,19 +1192,19 @@ exports.deepClone = _utils2.default;
 
 /***/ }),
 
-/***/ 600:
+/***/ 599:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(601)
+  __webpack_require__(600)
 }
 var normalizeComponent = __webpack_require__(5)
 /* script */
-var __vue_script__ = __webpack_require__(603)
+var __vue_script__ = __webpack_require__(602)
 /* template */
-var __vue_template__ = __webpack_require__(604)
+var __vue_template__ = __webpack_require__(603)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -1244,13 +1244,13 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 601:
+/***/ 600:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(602);
+var content = __webpack_require__(601);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -1271,7 +1271,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 602:
+/***/ 601:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(7)(false);
@@ -1286,7 +1286,7 @@ exports.push([module.i, "\nfieldset[disabled] .multiselect {\n    pointer-events
 
 /***/ }),
 
-/***/ 603:
+/***/ 602:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1586,7 +1586,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 604:
+/***/ 603:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
