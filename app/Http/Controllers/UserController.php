@@ -68,7 +68,21 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        return response()->json(['data'=> 5]);
+        $updatedUser = $user->update([
+            'user_code' => $request->userCode,
+            'username' => $request->userName,
+            'first_name' => $request->firstName,
+            'last_name' => $request->lastName,
+            'email' => $request->email,
+            'role_id' => $request->role,
+            'status' => $request->status,
+            'created_by' => 1,
+            'updated_by' => 1,
+            'deleted_by' => 1,
+        ]);
+
+        return new UserResource($user);
+
     }
 
     /**
@@ -79,6 +93,8 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        return response()->json(['data'=> 5]);
+         if($user->delete()){
+             return response()->json(['data'=> ['deleted' => true]]);
+         }
     }
 }

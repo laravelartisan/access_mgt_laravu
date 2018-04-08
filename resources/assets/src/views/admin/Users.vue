@@ -54,7 +54,7 @@
                                             </select>
                                         </div>
                                     </div>
-									<div class="form-group row required">
+									<div v-if="!editableUserId" class="form-group row required">
 									  <div class="col-md-2">
 										<label for="password" class="control-label">Password :</label>
 									  </div>
@@ -75,8 +75,8 @@
 									  <div class="col-md-4">
 										  <select class="form-control form-control-sm" id="status" name="status" v-model="form.status">
 											  <option value="" disabled>Select</option>
-											  <option value="1">Active</option>
-											  <option value="2">Inactive</option>
+											  <option :value= "true" >Active</option>
+											  <option :value= "false" >Inactive</option>
 										  </select>
 									  </div>
 									</div>
@@ -84,8 +84,8 @@
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-sm btn-default logic-btn-default" > Save</button>
                                     <button type="submit" class="btn btn-sm btn-default logic-btn-default" > Update</button>
-                                    <button type="submit" class="btn btn-sm btn-default logic-btn-default" >Delete</button>
-                                    <button type="reset" class="btn btn-sm btn-default logic-btn-default" @click = "refresh($event)">Refresh</button>
+                                    <button type="button" class="btn btn-sm btn-default logic-btn-default" >Delete</button>
+                                    <button type="button" class="btn btn-sm btn-default logic-btn-default" @click="resetForm()">Refresh</button>
 
                                 </div>
   				        	</form>
@@ -110,10 +110,11 @@
                                 <th>Full Name</th>
                                 <th>Email</th>
                                 <th>Role</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr  v-for="(user, index) in users" class="show-user"  @click="editUser(user)">
+                            <tr  v-for="(user, index) in users" class="show-user">
                               <td>
                                 {{ index + 1}}
                               </td>
@@ -130,7 +131,15 @@
 									{{user.email}}
 								</td>
 								<td>
-									{{user.role}}
+									{{user.roleName || 'N/A'}}
+								</td>
+								<td>
+									<a class="btn" @click="editUser(user, index)">
+										<i class="fa fa-edit"></i>
+									</a>
+									<a class="btn" @click="deleteUser(user, index)">
+										<i class="fa fa-trash"></i>
+									</a>
 								</td>
                             </tr>
 
@@ -171,10 +180,10 @@
 					email:'',
 					password:'',
 					cPassword:'',
-					role:1,
+					role: '',
 					status:'',
 				},
-				editMode: false,
+				editableUserId: false,
                 list:{
                     userCode: '',
                     userName: '',
@@ -184,17 +193,18 @@
                     status: '',
                 },
                 users:[],
+                userListIndex: '',
             }
         },
 
         methods:{
 			submitUser: function(){
 
-				this.editMode == false? this.saveUser(): this.updateUser();
+				this.editableUserId == false? this.saveNewUser(): this.updateUser();
 
             },
 
-			saveUser: function(){
+			saveNewUser: function(){
 				axios.post('/users', this.form).then( response => {
 					this.users.push(response.data.data);
 					for(let field in this.form){
@@ -207,22 +217,37 @@
 			},
 
 			updateUser: function(){
-				axios.post('/users/...', this.form).then( response => {
-					this.users.push(response.data.data);
-					for(let field in this.form){
-						this.form[field] = '';
-					}
+				axios.put('/users/'+ this.editableUserId, this.form).then( response => {
+					this.users.splice(this.userListIndex, 1, response.data.data );
+
 				}).catch( error => {
 					/*this.serverErrors = error.response.data.errors;
 					 console.log(this.serverErrors);*/
 				});
 			},
+            deleteUser: function(user, index){
+                this.editableUserId = user.id;
+                this.userListIndex = index;
+                axios.delete('/users/'+ this.editableUserId).then( response => {
+                    this.users.splice(this.userListIndex, 1);
 
-			editUser:function(user){
-				console.log(user);
+                }).catch( error => {
+                    /*this.serverErrors = error.response.data.errors;
+                     console.log(this.serverErrors);*/
+                });
+            },
+			editUser: function(user, index){
 				this.form = user;
-				this.editMode = true;
+				this.editableUserId = user.id;
+                this.userListIndex = index;
 			},
+
+			resetForm: function(){
+				for(let field in this.form){
+					this.form[field] = '';
+				}
+				this.editableUserId = false;
+			}
         },
         created:  function(){
 			axios.get('/users').then( response => {

@@ -120,10 +120,10 @@ exports.default = {
 				email: '',
 				password: '',
 				cPassword: '',
-				role: 1,
+				role: '',
 				status: ''
 			},
-			editMode: false,
+			editableUserId: false,
 			list: {
 				userCode: '',
 				userName: '',
@@ -132,17 +132,18 @@ exports.default = {
 				role: '',
 				status: ''
 			},
-			users: []
+			users: [],
+			userListIndex: ''
 		};
 	},
 
 	methods: {
 		submitUser: function submitUser() {
 
-			this.editMode == false ? this.saveUser() : this.updateUser();
+			this.editableUserId == false ? this.saveNewUser() : this.updateUser();
 		},
 
-		saveUser: function saveUser() {
+		saveNewUser: function saveNewUser() {
 			var _this = this;
 
 			axios.post('/users', this.form).then(function (response) {
@@ -159,33 +160,57 @@ exports.default = {
 		updateUser: function updateUser() {
 			var _this2 = this;
 
-			axios.post('/users/...', this.form).then(function (response) {
-				_this2.users.push(response.data.data);
-				for (var field in _this2.form) {
-					_this2.form[field] = '';
-				}
+			axios.put('/users/' + this.editableUserId, this.form).then(function (response) {
+				_this2.users.splice(_this2.userListIndex, 1, response.data.data);
 			}).catch(function (error) {
 				/*this.serverErrors = error.response.data.errors;
      console.log(this.serverErrors);*/
 			});
 		},
+		deleteUser: function deleteUser(user, index) {
+			var _this3 = this;
 
-		editUser: function editUser(user) {
-			console.log(user);
+			this.editableUserId = user.id;
+			this.userListIndex = index;
+			axios.delete('/users/' + this.editableUserId).then(function (response) {
+				_this3.users.splice(_this3.userListIndex, 1);
+			}).catch(function (error) {
+				/*this.serverErrors = error.response.data.errors;
+     console.log(this.serverErrors);*/
+			});
+		},
+		editUser: function editUser(user, index) {
 			this.form = user;
-			this.editMode = true;
+			this.editableUserId = user.id;
+			this.userListIndex = index;
+		},
+
+		resetForm: function resetForm() {
+			for (var field in this.form) {
+				this.form[field] = '';
+			}
+			this.editableUserId = false;
 		}
 	},
 	created: function created() {
-		var _this3 = this;
+		var _this4 = this;
 
 		axios.get('/users').then(function (response) {
-			_this3.users = response.data.data;
+			_this4.users = response.data.data;
 		}).catch(function (error) {
 			console.log(error.response.data.error);
 		});
 	}
 }; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -583,63 +608,73 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "form-group row required" }, [
-                  _vm._m(7),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.password,
-                          expression: "form.password"
-                        }
-                      ],
-                      staticClass: "form-control form-control-sm",
-                      attrs: { type: "password", id: "password" },
-                      domProps: { value: _vm.form.password },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                !_vm.editableUserId
+                  ? _c("div", { staticClass: "form-group row required" }, [
+                      _vm._m(7),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-4" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.password,
+                              expression: "form.password"
+                            }
+                          ],
+                          staticClass: "form-control form-control-sm",
+                          attrs: { type: "password", id: "password" },
+                          domProps: { value: _vm.form.password },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "password",
+                                $event.target.value
+                              )
+                            }
                           }
-                          _vm.$set(_vm.form, "password", $event.target.value)
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(8),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.cPassword,
-                          expression: "form.cPassword"
-                        }
-                      ],
-                      staticClass: "form-control form-control-sm",
-                      attrs: {
-                        type: "password",
-                        id: "cpassword",
-                        "data-vv-as": "password"
-                      },
-                      domProps: { value: _vm.form.cPassword },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(8),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-4" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.cPassword,
+                              expression: "form.cPassword"
+                            }
+                          ],
+                          staticClass: "form-control form-control-sm",
+                          attrs: {
+                            type: "password",
+                            id: "cpassword",
+                            "data-vv-as": "password"
+                          },
+                          domProps: { value: _vm.form.cPassword },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "cPassword",
+                                $event.target.value
+                              )
+                            }
                           }
-                          _vm.$set(_vm.form, "cPassword", $event.target.value)
-                        }
-                      }
-                    })
-                  ])
-                ]),
+                        })
+                      ])
+                    ])
+                  : _vm._e(),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group row required" }, [
                   _vm._m(9),
@@ -683,11 +718,11 @@ var render = function() {
                           _vm._v("Select")
                         ]),
                         _vm._v(" "),
-                        _c("option", { attrs: { value: "1" } }, [
+                        _c("option", { domProps: { value: true } }, [
                           _vm._v("Active")
                         ]),
                         _vm._v(" "),
-                        _c("option", { attrs: { value: "2" } }, [
+                        _c("option", { domProps: { value: false } }, [
                           _vm._v("Inactive")
                         ])
                       ]
@@ -719,7 +754,7 @@ var render = function() {
                   "button",
                   {
                     staticClass: "btn btn-sm btn-default logic-btn-default",
-                    attrs: { type: "submit" }
+                    attrs: { type: "button" }
                   },
                   [_vm._v("Delete")]
                 ),
@@ -728,10 +763,10 @@ var render = function() {
                   "button",
                   {
                     staticClass: "btn btn-sm btn-default logic-btn-default",
-                    attrs: { type: "reset" },
+                    attrs: { type: "button" },
                     on: {
                       click: function($event) {
-                        _vm.refresh($event)
+                        _vm.resetForm()
                       }
                     }
                   },
@@ -762,66 +797,83 @@ var render = function() {
                 _c(
                   "tbody",
                   _vm._l(_vm.users, function(user, index) {
-                    return _c(
-                      "tr",
-                      {
-                        staticClass: "show-user",
-                        on: {
-                          click: function($event) {
-                            _vm.editUser(user)
-                          }
-                        }
-                      },
-                      [
-                        _c("td", [
-                          _vm._v(
-                            "\n                                " +
-                              _vm._s(index + 1) +
-                              "\n                              "
-                          )
-                        ]),
+                    return _c("tr", { staticClass: "show-user" }, [
+                      _c("td", [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(index + 1) +
+                            "\n                              "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(
+                          "\n\t\t\t\t\t\t\t\t\t" +
+                            _vm._s(user.userCode) +
+                            "\n\t\t\t\t\t\t\t\t"
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(
+                          "\n\t\t\t\t\t\t\t\t\t" +
+                            _vm._s(user.userName) +
+                            "\n\t\t\t\t\t\t\t\t"
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(
+                          "\n\t\t\t\t\t\t\t\t\t" +
+                            _vm._s(user.fullName) +
+                            "\n\t\t\t\t\t\t\t\t"
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(
+                          "\n\t\t\t\t\t\t\t\t\t" +
+                            _vm._s(user.email) +
+                            "\n\t\t\t\t\t\t\t\t"
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(
+                          "\n\t\t\t\t\t\t\t\t\t" +
+                            _vm._s(user.roleName || "N/A") +
+                            "\n\t\t\t\t\t\t\t\t"
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "btn",
+                            on: {
+                              click: function($event) {
+                                _vm.editUser(user, index)
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fa fa-edit" })]
+                        ),
                         _vm._v(" "),
-                        _c("td", [
-                          _vm._v(
-                            "\n\t\t\t\t\t\t\t\t\t" +
-                              _vm._s(user.userCode) +
-                              "\n\t\t\t\t\t\t\t\t"
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _vm._v(
-                            "\n\t\t\t\t\t\t\t\t\t" +
-                              _vm._s(user.userName) +
-                              "\n\t\t\t\t\t\t\t\t"
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _vm._v(
-                            "\n\t\t\t\t\t\t\t\t\t" +
-                              _vm._s(user.fullName) +
-                              "\n\t\t\t\t\t\t\t\t"
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _vm._v(
-                            "\n\t\t\t\t\t\t\t\t\t" +
-                              _vm._s(user.email) +
-                              "\n\t\t\t\t\t\t\t\t"
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _vm._v(
-                            "\n\t\t\t\t\t\t\t\t\t" +
-                              _vm._s(user.role) +
-                              "\n\t\t\t\t\t\t\t\t"
-                          )
-                        ])
-                      ]
-                    )
+                        _c(
+                          "a",
+                          {
+                            staticClass: "btn",
+                            on: {
+                              click: function($event) {
+                                _vm.deleteUser(user, index)
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fa fa-trash" })]
+                        )
+                      ])
+                    ])
                   })
                 )
               ]
@@ -970,7 +1022,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Email")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Role")])
+        _c("th", [_vm._v("Role")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Action")])
       ])
     ])
   }
