@@ -13,10 +13,12 @@ class CreateRolesTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('roles');
         Schema::create('roles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('role_name')->unique();
             $table->integer('parent_role')->unsigned()->default(0);
+            $table->integer('home_page')->unsigned()->default(1);
 
             addCommonFields($table);
 

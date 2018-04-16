@@ -44,14 +44,22 @@
                                             <input type="text" id="email" name="email" class="form-control form-control-sm" placeholder="email" v-model="form.email">
                                         </div>
                                         <div class="col-md-2">
-                                            <label for="role" class="control-label">Role:</label>
+                                            <label  class="control-label">Role:</label>
                                         </div>
                                         <div class="col-md-4" >
-                                            <select name="role" id="role" class="form-control form-control-sm" v-model="form.role">
-                                                <option value="" disabled>Select</option>
-                                                <option value="1">Admin</option>
-                                                <option value="2">Heade of Markting</option>
-                                            </select>
+											<multi-select
+													v-model="selected"
+													:options="form.roles"
+													:multiple="true"
+													:close-on-select="false"
+													:limit="2"
+													@close="selectedValue"
+													placeholder="Select Role(s)"
+													track-by="role"
+													label="role"
+													@selectAll="selectAll"
+													>
+											</multi-select>
                                         </div>
                                     </div>
 									<div v-if="!editableUserId" class="form-group row required">
@@ -165,13 +173,15 @@
 </template>
 
 <script>
-	import {mapState} from 'vuex';
+
     export default {
-		/*components: {
-			'insert-button-group': () => import('../../widgets/buttons/InsertButtons.vue') ,
-		},*/
+		components: {
+			'multiSelect': () => import('../../widgets/vueMultiselect/index.js') ,
+		},
         data: function(){
             return {
+				selected: null,
+
 				form:{
 					userCode:'',
 					userName:'',
@@ -180,7 +190,12 @@
 					email:'',
 					password:'',
 					cPassword:'',
-					role: '',
+                    roles: [
+                        { id: 'Vue.js', role: 'JavaScript' },
+                        { id: 'Rails', role: 'Ruby' },
+                        { id: 'Laravel', role: 'PHP' },
+                        { id: 'Phoenix', role: 'Elixir' }
+                    ],
 					status:'',
 				},
 				editableUserId: false,
@@ -189,7 +204,7 @@
                     userName: '',
                     fullName: '',
                     email: '',
-                    role: '',
+                    role: [],
                     status: '',
                 },
                 users:[],
@@ -198,6 +213,12 @@
         },
 
         methods:{
+			selectedValue:function(){
+				/*alert('zakaria');*/
+			},
+			selectAll:function(selectedOptions){
+				this.selected = selectedOptions;
+			},
 			submitUser: function(){
 
 				this.editableUserId == false? this.saveNewUser(): this.updateUser();
@@ -247,15 +268,19 @@
 					this.form[field] = '';
 				}
 				this.editableUserId = false;
-			}
+			},
+
+            getUsers: function(){
+                axios.get('/users').then( response => {
+                    this.users = response.data.data;
+                })
+            .catch(function (error) {
+                    console.log(error.response.data.error);
+                });
+            }
         },
         created:  function(){
-			axios.get('/users').then( response => {
-				this.users = response.data.data;
-			})
-			.catch(function (error) {
-				console.log(error.response.data.error);
-			});
+			this.getUsers();
         }
     }
 </script>

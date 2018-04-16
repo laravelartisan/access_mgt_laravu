@@ -13,6 +13,7 @@ class CreatePrivilegesTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('privileges');
         Schema::create('privileges', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('role_id')->unsigned();

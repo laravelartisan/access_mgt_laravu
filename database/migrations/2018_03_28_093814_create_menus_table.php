@@ -13,6 +13,7 @@ class CreateMenusTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('menus');
         Schema::create('menus', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('module_id')->unsigned();

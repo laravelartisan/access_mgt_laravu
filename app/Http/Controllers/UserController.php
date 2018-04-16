@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return new UserCollection(User::all());
+        return new UserCollection(User::with('roles')->get());
     }
 
     /**
@@ -35,7 +35,6 @@ class UserController extends Controller
            'first_name' => $request->firstName,
            'last_name' => $request->lastName,
            'email' => $request->email,
-           'role_id' => $request->role,
            'password' => bcrypt($request->password),
            'sequence' => $userNum + 1,
            'status' => $request->status,
@@ -74,7 +73,6 @@ class UserController extends Controller
             'first_name' => $request->firstName,
             'last_name' => $request->lastName,
             'email' => $request->email,
-            'role_id' => $request->role,
             'status' => $request->status,
             'created_by' => 1,
             'updated_by' => 1,

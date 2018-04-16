@@ -22,8 +22,8 @@ class UserResource extends Resource
             'lastName' => $this->last_name,
             'fullName' => $this->first_name.' '.$this->last_name,
             'email' => $this->email,
-            'role' => $this->role_id,
-            'roleName' => isset($this->role)?$this->role:null,
+//            'role' => $this->role_id,
+//            'roleName' => isset($this->role)?$this->role:null,
             'status' => $this->status,
             'createdAt' => date_format($this->created_at, 'Y/m/d'),
             'updatedAt' => date_format($this->updated_at, 'Y/m/d')

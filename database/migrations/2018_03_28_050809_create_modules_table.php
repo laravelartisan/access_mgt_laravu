@@ -20,6 +20,7 @@ class CreateModulesTable extends Migration
             $table->string('module_name',30)->unique();
 
             addCommonFields($table);
+
             $table->index('module_name');
         });
     }

@@ -28,12 +28,13 @@ class User extends Authenticatable
     ];
 
     protected $casts = [
+        'id' => 'integer',
         'role_id' => 'integer',
         'status' => 'boolean'
     ];
 
-    public function role()
+    public function roles()
     {
-        return $this->belongsTo(Role::class);
+        return $this->belongsToMany(Role::class);
     }
 }

@@ -13,6 +13,7 @@ class CreateMenuActionsTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('menu_actions');
         Schema::create('menu_actions', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('menu_id')->unsigned();
