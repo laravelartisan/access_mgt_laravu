@@ -19,9 +19,9 @@
         'logicFooter': () => import('../components/templates/admin/Footer')
       },
 
-      created: function(){
-
-        },
+      created: function() {
+          this.$store.dispatch('role/getRoles');
+      }
 
     }
 </script>

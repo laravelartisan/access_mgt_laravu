@@ -6,9 +6,11 @@ use App\Http\Resources\UserCollection;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
+    private $newRow;
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +18,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return new UserCollection(User::with('roles')->get());
+        return new UserCollection(User::all());
     }
 
     /**
@@ -27,23 +29,28 @@ class UserController extends Controller
      */
     public function store(Request $request, User $user)
     {
-        $userNum = $user->max('sequence');
+        DB::transaction(function()use($request, $user){
+            $userNum = $user->max('sequence');
 
-        $newUser = $user->create([
-           'user_code' => $request->userCode,
-           'username' => $request->userName,
-           'first_name' => $request->firstName,
-           'last_name' => $request->lastName,
-           'email' => $request->email,
-           'password' => bcrypt($request->password),
-           'sequence' => $userNum + 1,
-           'status' => $request->status,
-           'created_by' => 1,
-           'updated_by' => 1,
-           'deleted_by' => 1,
-       ]);
+            $this->newRow = $user->create([
+                'user_code' => $request->userCode,
+                'username' => $request->userName,
+                'first_name' => $request->firstName,
+                'last_name' => $request->lastName,
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+                'sequence' => $userNum + 1,
+                'status' => $request->status,
+                'created_by' => 1,
+                'updated_by' => 1,
+                'deleted_by' => 1,
+            ]);
 
-        return new UserResource($newUser);
+            $this->newRow->roles()->syncWithoutDetaching($request->roles);
+        });
+
+
+        return new UserResource($this->newRow);
 
     }
 
@@ -67,18 +74,15 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $updatedUser = $user->update([
-            'user_code' => $request->userCode,
-            'username' => $request->userName,
-            'first_name' => $request->firstName,
-            'last_name' => $request->lastName,
-            'email' => $request->email,
-            'status' => $request->status,
-            'created_by' => 1,
-            'updated_by' => 1,
-            'deleted_by' => 1,
-        ]);
-
+        $user->user_code = $request->userCode;
+        $user->username = $request->userName;
+        $user->first_name = $request->firstName;
+        $user->last_name = $request->lastName;
+        $user->email = $request->email;
+        $user->status = $request->status;
+        $user->updated_by = 1;
+        $user->roles()->sync($request->roles);
+        $user->save();
         return new UserResource($user);
 
     }

@@ -6,7 +6,7 @@
   				        <div class="card-header">
   				          <h4>Accounts Information</h4>
   				        </div>
-  				        	<form action="" method="post" class="form-group" @submit.prevent="submitUser">
+  				        	<form action="" method="post" class="form-group" @submit.prevent="submitForm">
 								<div class="card-body">
 									<div class="form-group row required">
 									  <div class="col-md-2">
@@ -47,22 +47,13 @@
                                             <label  class="control-label">Role:</label>
                                         </div>
                                         <div class="col-md-4" >
-											<multi-select
-													v-model="selected"
-													:options="form.roles"
-													:multiple="true"
-													:close-on-select="false"
-													:limit="2"
-													@close="selectedValue"
-													placeholder="Select Role(s)"
-													track-by="role"
-													label="role"
-													@selectAll="selectAll"
-													>
-											</multi-select>
+                                            <select class="form-control form-control-sm" multiple v-model="form.roles">
+                                                <option value="" disabled>Select Role</option>
+                                                <option v-for="(role, index) in roles" :value="role.id"> {{ role.name}} </option>
+                                            </select>
                                         </div>
                                     </div>
-									<div v-if="!editableUserId" class="form-group row required">
+									<div v-if="!editableRowId" class="form-group row required">
 									  <div class="col-md-2">
 										<label for="password" class="control-label">Password :</label>
 									  </div>
@@ -90,8 +81,8 @@
 									</div>
 								</div>
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-sm btn-default logic-btn-default" > Save</button>
-                                    <button type="submit" class="btn btn-sm btn-default logic-btn-default" > Update</button>
+                                    <button v-if="!isEditable" type="submit" class="btn btn-sm btn-default logic-btn-default" > Save</button>
+                                    <button v-else type="submit" class="btn btn-sm btn-default logic-btn-default" > Update</button>
                                     <button type="button" class="btn btn-sm btn-default logic-btn-default" >Delete</button>
                                     <button type="button" class="btn btn-sm btn-default logic-btn-default" @click="resetForm()">Refresh</button>
 
@@ -122,7 +113,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr  v-for="(user, index) in users" class="show-user">
+                            <tr  v-for="(user, index) in list" class="show-user">
                               <td>
                                 {{ index + 1}}
                               </td>
@@ -142,10 +133,10 @@
 									{{user.roleName || 'N/A'}}
 								</td>
 								<td>
-									<a class="btn" @click="editUser(user, index)">
+									<a class="btn" @click="editRow(user, index)">
 										<i class="fa fa-edit"></i>
 									</a>
-									<a class="btn" @click="deleteUser(user, index)">
+									<a class="btn" @click="deleteRow(user, index)">
 										<i class="fa fa-trash"></i>
 									</a>
 								</td>
@@ -173,16 +164,23 @@
 </template>
 
 <script>
-
+    import {mapState} from 'vuex';
     export default {
 		components: {
 			'multiSelect': () => import('../../widgets/vueMultiselect/index.js') ,
 		},
+
+        computed: mapState({
+            roles: state => state.role.list,
+
+            isEditable: function(){
+                return this.editableRowId;
+            }
+        }),
+
         data: function(){
             return {
-				selected: null,
-
-				form:{
+                form:{
 					userCode:'',
 					userName:'',
 					firstName:'',
@@ -190,44 +188,28 @@
 					email:'',
 					password:'',
 					cPassword:'',
-                    roles: [
-                        { id: 'Vue.js', role: 'JavaScript' },
-                        { id: 'Rails', role: 'Ruby' },
-                        { id: 'Laravel', role: 'PHP' },
-                        { id: 'Phoenix', role: 'Elixir' }
-                    ],
+                    roles: [],
 					status:'',
 				},
-				editableUserId: false,
-                list:{
-                    userCode: '',
-                    userName: '',
-                    fullName: '',
-                    email: '',
-                    role: [],
-                    status: '',
-                },
-                users:[],
-                userListIndex: '',
+				editableRowId: false,
+				listIndex: '',
+                list:[
+
+				],
             }
         },
 
         methods:{
-			selectedValue:function(){
-				/*alert('zakaria');*/
-			},
-			selectAll:function(selectedOptions){
-				this.selected = selectedOptions;
-			},
-			submitUser: function(){
 
-				this.editableUserId == false? this.saveNewUser(): this.updateUser();
+			submitForm: function(){
+
+				this.editableRowId == false? this.insertNewRow(): this.updateRow();
 
             },
 
-			saveNewUser: function(){
+			insertNewRow: function(){
 				axios.post('/users', this.form).then( response => {
-					this.users.push(response.data.data);
+					this.list.push(response.data.data);
 					for(let field in this.form){
 						this.form[field] = '';
 					}
@@ -237,42 +219,45 @@
 				});
 			},
 
-			updateUser: function(){
-				axios.put('/users/'+ this.editableUserId, this.form).then( response => {
-					this.users.splice(this.userListIndex, 1, response.data.data );
+			updateRow: function(){
+				axios.put('/users/'+ this.editableRowId, this.form).then( response => {
+					this.list.splice(this.listIndex, 1, response.data.data );
+
+                    console.log(response.data.data );
 
 				}).catch( error => {
 					/*this.serverErrors = error.response.data.errors;
 					 console.log(this.serverErrors);*/
 				});
 			},
-            deleteUser: function(user, index){
-                this.editableUserId = user.id;
-                this.userListIndex = index;
-                axios.delete('/users/'+ this.editableUserId).then( response => {
-                    this.users.splice(this.userListIndex, 1);
+            deleteRow: function(user, index){
+                this.editableRowId = user.id;
+                this.listIndex = index;
+                axios.delete('/users/'+ this.editableRowId).then( response => {
+                    this.users.splice(this.listIndex, 1);
 
                 }).catch( error => {
                     /*this.serverErrors = error.response.data.errors;
                      console.log(this.serverErrors);*/
                 });
             },
-			editUser: function(user, index){
+			editRow: function(user, index){
 				this.form = user;
-				this.editableUserId = user.id;
-                this.userListIndex = index;
+                console.log(this.form);
+				this.editableRowId = user.id;
+                this.listIndex = index;
 			},
 
 			resetForm: function(){
 				for(let field in this.form){
 					this.form[field] = '';
 				}
-				this.editableUserId = false;
+				this.editableRowId = false;
 			},
 
-            getUsers: function(){
+            getList: function(){
                 axios.get('/users').then( response => {
-                    this.users = response.data.data;
+                    this.list = response.data.data;
                 })
             .catch(function (error) {
                     console.log(error.response.data.error);
@@ -280,7 +265,7 @@
             }
         },
         created:  function(){
-			this.getUsers();
+			this.getList();
         }
     }
 </script>

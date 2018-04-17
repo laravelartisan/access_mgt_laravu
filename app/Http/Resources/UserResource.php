@@ -14,6 +14,13 @@ class UserResource extends Resource
      */
     public function toArray($request)
     {
+
+        $roles = RoleResource::collection($this->whenLoaded('roles'));
+        $roleIds = $roles->map(function($role, $key){
+            return $role->id;
+        });
+
+
         return [
             'id' => (int)$this->id,
             'userCode' => $this->user_code,
@@ -22,8 +29,7 @@ class UserResource extends Resource
             'lastName' => $this->last_name,
             'fullName' => $this->first_name.' '.$this->last_name,
             'email' => $this->email,
-//            'role' => $this->role_id,
-//            'roleName' => isset($this->role)?$this->role:null,
+            'roles' => $roleIds,
             'status' => $this->status,
             'createdAt' => date_format($this->created_at, 'Y/m/d'),
             'updatedAt' => date_format($this->updated_at, 'Y/m/d')

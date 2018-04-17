@@ -56,15 +56,15 @@
                                     <div class="col-lg-9">
                                         <select class="form-control form-control-sm" v-model="form.status">
                                             <option value="" disabled>Select</option>
-                                            <option value="1" >Active</option>
-                                            <option value="0" >Inactive</option>
+                                            <option :value="true" >Active</option>
+                                            <option :value="false" >Inactive</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-sm btn-default logic-btn-default" > Save</button>
-                                <button type="submit" class="btn btn-sm btn-default logic-btn-default" > Update</button>
+                                <button v-if="!isEditable" type="submit" class="btn btn-sm btn-default logic-btn-default" > Save</button>
+                                <button v-else type="submit" class="btn btn-sm btn-default logic-btn-default" > Update</button>
                                 <button type="button" class="btn btn-sm btn-default logic-btn-default" >Delete</button>
                                 <button type="button" class="btn btn-sm btn-default logic-btn-default" @click="resetForm()">Refresh</button>
                             </div>
@@ -78,11 +78,77 @@
         </div>
         <!--/container-->
 
+        <div class="show-user container">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4><i class="fa fa-align-justify"></i> Role List</h4>
+                    </div>
+                    <div class="card-block">
+                        <table class="table table-responsive table-bordered table-striped table-sm">
+                            <thead>
+                            <tr>
+                                <th>SL#</th>
+                                <th>Role</th>
+                                <th>Parent Role</th>
+                                <th>Home Page</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr  v-for="(role, index) in list" class="show-user">
+                                <td>
+                                    {{ index + 1}}
+                                </td>
+                                <td>
+                                    {{ role.name}}
+                                </td>
+                                <td>
+                                    {{role.parentRole}}
+                                </td>
+                                <td>
+                                    {{role.homePage}}
+                                </td>
+                                <td>
+                                    {{role.status}}
+                                </td>
+                                <td>
+                                    <a class="btn" @click="editRow(role, index)">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a class="btn" @click="deleteRow(role, index)">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
 
+                            </tbody>
+                        </table>
+                        <!--  <nav>
+                              <ul class="pagination">
+                                  <li class="page-item"><a href="#" class="page-link">Prev</a></li>
+                                  <li class="page-item active"><a href="#" class="page-link">1</a></li>
+                                  <li class="page-item"><a href="#" class="page-link">2</a></li>
+                                  <li class="page-item"><a href="#" class="page-link">3</a></li>
+                                  <li class="page-item"><a href="#" class="page-link">4</a></li>
+                                  <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                              </ul>
+                          </nav>-->
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 </template>
 <script>
     export default {
+
+        computed: {
+            isEditable: function(){
+                return this.editableRowId;
+            }
+        },
         data: function(){
             return {
                message: {
@@ -101,20 +167,22 @@
                     roles: [],
                     homePages: [],
                 },
-                list:{
-                   role: '',
-                   parentRole: '',
-                },
-
-                roles: [],
+                list:[
+                ],
             }
         },
         methods:{
 
-            getRoles: function(){
+            getList: function(){
                 axios.get('/roles').then( response => {
-                    this.roles = response.data.data;
-                    this.dropdown.roles = response.data.data;
+                    this.list = response.data.data;
+                    this.list.forEach(role=> {
+                        this.dropDown.roles.push({
+                            id: role.id,
+                            name: role.name
+                        });
+                    });
+
                 })
                 .catch(function (error) {
 //                    console.log(error.response.data.error);
@@ -128,7 +196,12 @@
 
             insertNewRow: function(){
                 axios.post('/roles', this.form).then( response => {
-                    this.roles.push(response.data.data);
+                    let newRole = response.data.data;
+                    this.list.push(newRole);
+                    this.dropDown.roles.push({
+                        id: newRole.id,
+                        name: newRole.name
+                    });
                     for(let field in this.form){
                         this.form[field] = '';
                     }
@@ -140,7 +213,7 @@
 
             updateRow: function(){
                 axios.put('/roles/'+ this.editableRowId, this.form).then( response => {
-                    this.roles.splice(this.listIndex, 1, response.data.data );
+                    this.list.splice(this.listIndex, 1, response.data.data );
 
                 }).catch( error => {
                     /*this.serverErrors = error.response.data.errors;
@@ -173,7 +246,7 @@
 
         },
         created: function(){
-            this.getRoles();
+            this.getList();
         }
     }
 </script>
