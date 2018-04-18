@@ -31,7 +31,7 @@
                                             <option v-for="role in dropDown.roles" :value="role.id">
                                                 {{ role.name }}
                                             </option>
-                                    </select>
+                                        </select>
                                     </div>
                                 </div>
 
@@ -150,16 +150,16 @@
         },
         data: function(){
             return {
-               message: {
-                   success: '',
-                   failure: ''
-               },
-               form: {
-                   name: '',
-                   parentRole: '',
-                   homePage: '',
-                   status: '',
-               },
+                message: {
+                    success: '',
+                    failure: ''
+                },
+                form: {
+                    name: '',
+                    parentRole: '',
+                    homePage: '',
+                    status: '',
+                },
                 editableRowId: 0,
                 listIndex: '',
                 dropDown:{
@@ -183,9 +183,9 @@
                     });
 
                 })
-                .catch(function (error) {
+                        .catch(function (error) {
 //                    console.log(error.response.data.error);
-                });
+                        });
             },
             submitForm: function(){
                 console.log(this.form);

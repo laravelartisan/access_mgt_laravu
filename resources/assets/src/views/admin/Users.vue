@@ -83,7 +83,6 @@
                                 <div class="card-footer">
                                     <button v-if="!isEditable" type="submit" class="btn btn-sm btn-default logic-btn-default" > Save</button>
                                     <button v-else type="submit" class="btn btn-sm btn-default logic-btn-default" > Update</button>
-                                    <button type="button" class="btn btn-sm btn-default logic-btn-default" >Delete</button>
                                     <button type="button" class="btn btn-sm btn-default logic-btn-default" @click="resetForm()">Refresh</button>
 
                                 </div>
@@ -174,7 +173,7 @@
             roles: state => state.role.list,
 
             isEditable: function(){
-                return this.editableRowId;
+                return this.editableRowId > 0;
             }
         }),
 
@@ -191,7 +190,7 @@
                     roles: [],
 					status:'',
 				},
-				editableRowId: false,
+				editableRowId: 0,
 				listIndex: '',
                 list:[
 
@@ -210,9 +209,7 @@
 			insertNewRow: function(){
 				axios.post('/users', this.form).then( response => {
 					this.list.push(response.data.data);
-					for(let field in this.form){
-						this.form[field] = '';
-					}
+					this.resetForm();
 				}).catch( error => {
 					/*this.serverErrors = error.response.data.errors;
 					 console.log(this.serverErrors);*/
@@ -231,11 +228,11 @@
 				});
 			},
             deleteRow: function(user, index){
-                this.editableRowId = user.id;
+                this.editableRowId = 0;
                 this.listIndex = index;
-                axios.delete('/users/'+ this.editableRowId).then( response => {
-                    this.users.splice(this.listIndex, 1);
-
+                axios.delete('/users/'+ user.id).then( response => {
+                    this.list.splice(this.listIndex, 1);
+					this.resetForm();
                 }).catch( error => {
                     /*this.serverErrors = error.response.data.errors;
                      console.log(this.serverErrors);*/
@@ -252,7 +249,7 @@
 				for(let field in this.form){
 					this.form[field] = '';
 				}
-				this.editableRowId = false;
+				this.editableRowId = 0;
 			},
 
             getList: function(){

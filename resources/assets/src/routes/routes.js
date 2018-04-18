@@ -10,6 +10,7 @@ export default [
             {path: '/menu', name:'menu', component: () => import('../views/admin/Menu'), meta: { requiresAuth: true }},
             {path: '/menu-management', name:'menuManagement', component: () => import('../views/admin/MenuManagement'), meta: { requiresAuth: true },},
             {path: '/roles', name:'role', component: () => import('../views/admin/Role'), meta: { requiresAuth: true },},
+            {path: '/modules', name:'module', component: () => import('../views/admin/Module'), meta: { requiresAuth: true },},
         ]
         },
     ]),

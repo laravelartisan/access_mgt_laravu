@@ -33,7 +33,6 @@ class User extends Authenticatable
         'status' => 'boolean'
     ];
 
-    protected $with = ['roles'];
 
     public function roles()
     {

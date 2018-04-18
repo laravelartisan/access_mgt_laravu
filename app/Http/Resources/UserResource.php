@@ -3,9 +3,25 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\Resource;
+use Illuminate\Http\Resources\MissingValue;
 
 class UserResource extends Resource
 {
+
+    private function relationalIds($relation, $resourceCollection)
+    {
+        if(!$this->whenLoaded($relation) instanceof  MissingValue){
+            $relationalIds = $resourceCollection->map(function($relationalItem, $key){
+                return $relationalItem->id;
+            });
+        }else{
+            $relationalIds = $this->{$relation}->map(function($relationalItem, $key){
+                return $relationalItem->id;
+            });
+        }
+
+        return $relationalIds;
+    }
     /**
      * Transform the resource into an array.
      *
@@ -15,11 +31,7 @@ class UserResource extends Resource
     public function toArray($request)
     {
 
-        $roles = RoleResource::collection($this->whenLoaded('roles'));
-        $roleIds = $roles->map(function($role, $key){
-            return $role->id;
-        });
-
+        $roleIds = $this->relationalIds('roles', RoleResource::collection($this->whenLoaded('roles')));
 
         return [
             'id' => (int)$this->id,
