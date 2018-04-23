@@ -112,7 +112,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr  v-for="(user, index) in list" class="show-user">
+                            <tr  v-for="(user, index) in list" class="show-user" @click="editRow(user, index)">
                               <td>
                                 {{ index + 1}}
                               </td>
@@ -170,7 +170,7 @@
 		},
 
         computed: mapState({
-            roles: state => state.role.list,
+            roles: state => state.roles.list,
 
             isEditable: function(){
                 return this.editableRowId > 0;
@@ -240,14 +240,13 @@
             },
 			editRow: function(user, index){
 				this.form = user;
-                console.log(this.form);
 				this.editableRowId = user.id;
                 this.listIndex = index;
 			},
 
 			resetForm: function(){
 				for(let field in this.form){
-					this.form[field] = '';
+					this.form[field] instanceof Array? this.form[field] = []: this.form[field] = '';
 				}
 				this.editableRowId = 0;
 			},
@@ -263,6 +262,7 @@
         },
         created:  function(){
 			this.getList();
+			this.$store.dispatch('roles/getRoles');
         }
     }
 </script>

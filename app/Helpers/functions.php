@@ -16,9 +16,9 @@ if(!function_exists('addCommonFields')){
         $table->boolean('status')->default(0);
         $table->timestamps();
         $table->softDeletes();
-        $table->integer('created_by')->unsigned();
-        $table->integer('updated_by')->unsigned();
-        $table->integer('deleted_by')->unsigned();
+        $table->integer('created_by')->unsigned()->nullalble();
+        $table->integer('updated_by')->unsigned()->nullable();
+        $table->integer('deleted_by')->unsigned()->nullable();
         return;
     }
 }

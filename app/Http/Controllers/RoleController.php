@@ -28,8 +28,6 @@ class RoleController extends Controller
                 'sequence' => $rowNum + 1,
                 'status' => $request->status,
                 'created_by' => 1,
-                'updated_by' => 1,
-                'deleted_by' => 1,
             ]);
 
         });

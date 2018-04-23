@@ -42,8 +42,6 @@ class UserController extends Controller
                 'sequence' => $userNum + 1,
                 'status' => $request->status,
                 'created_by' => 1,
-                'updated_by' => 1,
-                'deleted_by' => 1,
             ]);
 
             $this->newRow->roles()->syncWithoutDetaching($request->roles);

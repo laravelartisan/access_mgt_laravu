@@ -20,7 +20,7 @@
       },
 
       created: function() {
-          this.$store.dispatch('role/getRoles');
+
       }
 
     }

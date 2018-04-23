@@ -19,3 +19,4 @@ use Illuminate\Http\Request;
 
 Route::apiResource('users', 'UserController');
 Route::apiResource('roles', 'RoleController');
+Route::apiResource('modules', 'ModuleController');
