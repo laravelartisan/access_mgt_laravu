@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\MenuCollection;
+use App\Http\Resources\MenuResource;
+use App\Models\Menu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MenuController extends Controller
 {
+
+    private $newRow;
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +19,7 @@ class MenuController extends Controller
      */
     public function index()
     {
-        //
+        return new MenuCollection(Menu::all());
     }
 
     /**
@@ -32,9 +38,24 @@ class MenuController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Menu $menu)
     {
-        //
+        DB::transaction(function()use($request, $menu){
+            $userNum = $menu->max('sequence');
+
+            $this->newRow = $menu->create([
+                'menu_name' => $request->menuName,
+                'module_id' => $request->module,
+                'parent_menu' => $request->parentMenu,
+                'menu_route_name' => $request->route,
+                'sequence' => $userNum + 1,
+                'status' => $request->status,
+                'created_by' => 1,
+            ]);
+        });
+
+
+        return new MenuResource($this->newRow);
     }
 
     /**
@@ -80,5 +101,10 @@ class MenuController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getMenusByModule($module)
+    {
+        return new MenuCollection(Menu::whereModuleId($module)->get());
     }
 }

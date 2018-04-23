@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\ModuleCollection;
 use App\Http\Resources\ModuleResource;
+use App\Models\Menu;
 use App\Models\Module;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -104,4 +105,6 @@ class ModuleController extends Controller
     {
         //
     }
+
+
 }
