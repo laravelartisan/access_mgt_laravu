@@ -22,4 +22,4 @@ Route::apiResource('roles', 'RoleController');
 Route::apiResource('modules', 'ModuleController');
 Route::apiResource('menus', 'MenuController');
 
-Route::get('menus-by-module/{module}', 'MenuController@getMenusByModule');
+Route::get('menus/{module}/module/{excludableMenu?}', 'MenuController@getMenusByModule');

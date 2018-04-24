@@ -38,7 +38,7 @@
                                             <option value="" disabled>Select Menu</option>
                                             <option value="0">Root Menu</option>
                                             <option v-for="menu in dropDown.menus" :value="menu.id">
-                                                {{ menu.name }}
+                                                {{ menu.menuName }}
                                             </option>
                                         </select>
                                     </div>
@@ -56,8 +56,8 @@
                                     <div class="col-lg-9">
                                         <select class="form-control form-control-sm" v-model="form.status">
                                             <option value="" disabled>Select</option>
-                                            <option value="0">Active</option>
-                                            <option value="1">Inactive</option>
+                                            <option :value="true">Active</option>
+                                            <option :value="false">Inactive</option>
                                         </select>
                                     </div>
                                 </div>
@@ -97,12 +97,12 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr  v-for="(menu, index) in list" class="show-user" @click="editRow(menu, index)">
+                            <tr  v-for="(menu, index) in list" class="show-user">
                                 <td>
                                     {{ index + 1}}
                                 </td>
                                 <td>
-                                    {{ menu.name}}
+                                    {{ menu.menuName}}
                                 </td>
                                 <td>
                                     {{menu.module}}
@@ -178,7 +178,12 @@
         methods:{
 
             getMenusByModule: function(moduleId){
-                axios.get('/menus-by-module/'+moduleId).then( response => {
+
+                let url = this.editableRowId > 0?
+                '/menus/' + moduleId + '/module/' + this.editableRowId:
+                '/menus/' + moduleId  + '/module';
+
+                axios.get(url).then( response => {
                     this.dropDown.menus = response.data.data;
                 })
                         .catch(function (error) {
@@ -216,7 +221,7 @@
             },
 
             updateRow: function(){
-                axios.put('/roles/'+ this.editableRowId, this.form).then( response => {
+                axios.put('/menus/'+ this.editableRowId, this.form).then( response => {
                     this.list.splice(this.listIndex, 1, response.data.data );
 
                 }).catch( error => {
@@ -224,20 +229,22 @@
                      console.log(this.serverErrors);*/
                 });
             },
-            deleteRow: function(role, index){
+            deleteRow: function(menu, index){
                 this.editableRowId = 0;
                 this.listIndex = index;
-                axios.delete('/users/'+ role.id).then( response => {
-                    this.roles.splice(this.listIndex, 1);
+                axios.delete('/menus/'+ menu.id).then( response => {
+                    this.list.splice(this.listIndex, 1);
                     this.resetForm();
                 }).catch( error => {
                     /*this.serverErrors = error.response.data.errors;
                      console.log(this.serverErrors);*/
                 });
             },
-            editRow: function(role, index){
-                this.form = role;
-                this.editableRowId = role.id;
+            editRow: function(menu, index){
+                alert(menu.status);
+                this.getMenusByModule(menu.module);
+                this.form = menu;
+                this.editableRowId = menu.id;
                 this.listIndex = index;
             },
 

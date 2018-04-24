@@ -16,7 +16,7 @@ class MenuResource extends Resource
     {
         return [
             'id' => $this->id,
-            'name' => $this->menu_name,
+            'menuName' => $this->menu_name,
             'module' => $this->module_id,
             'parentMenu' => $this->parent_menu,
             'route' => $this->menu_route_name,

@@ -112,7 +112,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr  v-for="(user, index) in list" class="show-user" @click="editRow(user, index)">
+                            <tr  v-for="(user, index) in list" class="show-user">
                               <td>
                                 {{ index + 1}}
                               </td>

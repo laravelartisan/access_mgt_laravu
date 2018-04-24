@@ -41,14 +41,14 @@ class MenuController extends Controller
     public function store(Request $request, Menu $menu)
     {
         DB::transaction(function()use($request, $menu){
-            $userNum = $menu->max('sequence');
+            $menuNum = $menu->max('sequence');
 
             $this->newRow = $menu->create([
                 'menu_name' => $request->menuName,
                 'module_id' => $request->module,
                 'parent_menu' => $request->parentMenu,
                 'menu_route_name' => $request->route,
-                'sequence' => $userNum + 1,
+                'sequence' => $menuNum + 1,
                 'status' => $request->status,
                 'created_by' => 1,
             ]);
@@ -87,9 +87,18 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Menu $menu)
     {
-        //
+        $updatedRow = $menu->update([
+            'menu_name' => $request->menuName,
+            'module_id' => $request->module,
+            'parent_menu' => $request->parentMenu,
+            'menu_route_name' => $request->route,
+            'status' => $request->status,
+            'updated_by' => 1,
+        ]);
+
+        return new MenuResource($menu);
     }
 
     /**
@@ -98,13 +107,20 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Menu $menu)
     {
-        //
+        if($menu->delete()){
+            return response()->json(['data'=> ['deleted' => true]]);
+        }
     }
 
-    public function getMenusByModule($module)
+    public function getMenusByModule($module, $menu = null)
     {
-        return new MenuCollection(Menu::whereModuleId($module)->get());
+        if(!is_null($menu)){
+            $menus = Menu::whereModuleId($module)->whereNotIn('id',[$menu])->get();
+        }else{
+            $menus = Menu::whereModuleId($module)->get();
+        }
+        return new MenuCollection($menus);
     }
 }
