@@ -16,10 +16,18 @@ use Illuminate\Http\Request;
 /*Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });*/
+Route::post('auth/signin', 'AuthController@login');
 
-Route::apiResource('users', 'UserController');
-Route::apiResource('roles', 'RoleController');
-Route::apiResource('modules', 'ModuleController');
-Route::apiResource('menus', 'MenuController');
+Route::group(['middleware' => 'api', 'prefix' => 'auth'], function(){
 
-Route::get('menus/{module}/module/{excludableMenu?}', 'MenuController@getMenusByModule');
+    Route::post('logout', 'AuthController@logout');
+    Route::post('refresh', 'AuthController@refresh');
+    Route::apiResource('users', 'UserController');
+    Route::apiResource('roles', 'RoleController');
+    Route::apiResource('modules', 'ModuleController');
+    Route::apiResource('menus', 'MenuController');
+
+    Route::get('menus/{module}/module/{excludableMenu?}', 'MenuController@getMenusByModule');
+});
+
+

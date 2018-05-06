@@ -7,6 +7,7 @@
 
 import './bootstrap.js';
 import store from './store/index.js'
+//import App from './Main.vue'
 import App from './App.vue'
 
 

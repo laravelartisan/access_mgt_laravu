@@ -1,22 +1,28 @@
 export default [
-        {path: '/', name:'index', redirect:'login'},
-    ...middleware('guest', [
         {
-            path: '/admin/admin',
-            name:'admin',
-            redirect:{
-                name:'dashboard'
-            },
-            component: () => import ('../layouts/Admin'),
-            children:[
-                {
-                    path: '/dashboard',
-                    name: 'dashboard',
-                    component: () => import('../views/admin/Dashboard'),
-                    meta: {
-                        requiresAuth: true
-                    },
+            path: '/',
+            name:'index',
+            redirect:'login'
+        },
+    ...middleware('guest', [
+            {
+                path: '/admin',
+                name:'admin',
+                redirect:{
+                    name:'dashboard'
                 },
+                component: () => import ('../Main'),
+            },
+
+
+            {
+                path: '/dashboard',
+                name: 'dashboard',
+                component: () => import('../views/admin/Dashboard'),
+                meta: {
+                    requiresAuth: true
+                },
+            },
             {
                 path: '/users',
                 name:'users',
@@ -77,8 +83,6 @@ export default [
                     requiresAuth: true
                 },
             },
-        ]
-        },
     ]),
 
 
@@ -96,15 +100,6 @@ export default [
 
 //export default router;
 
-
-/*
-alternative for import async component
-function viewAdmin(name) {
-    return function(resolve) {
-        require(['../views/admin' + name + '.vue'], resolve);
-    }
-};
-*/
 
 /**
  * @param  {String|Function} middleware
