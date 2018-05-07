@@ -32,7 +32,8 @@ Vue.use(Datatable);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.axios.defaults.headers.common['X-CSRF-TOKEN'] = document.getElementsByName('csrf-token')[0].getAttribute('content');
-window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + jwtToken.getToken();
+//window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + jwtToken.getToken();
+window.axios.defaults.headers.common['Authorization'] = 'bearer ' + jwtToken.getToken();
 //window.axios.defaults.headers.common['LoginTime'] = jwtToken.getloginTime();
 
 

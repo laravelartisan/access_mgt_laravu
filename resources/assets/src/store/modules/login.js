@@ -19,11 +19,11 @@ export const   state = {
 
 export const     mutations = {
     [types.SET_AUTH_USER] (state, {user}) {
-        console.log(user.data)
+        console.log(user)
         state.authenticated = true;
-        state.name = 5;
-        state.email = 5;
-        state.roles = user.data.roles.data;
+        state.name = user.fullName;
+        state.email = user.email;
+        //state.roles = user.data.roles.data;
     },
     [types.UNSET_AUTH_USER] (state) {
         alert('unset');
@@ -56,9 +56,10 @@ export const     mutations = {
 export const    actions = {
         loginRequest: ({dispatch}, formData) => {
             return new Promise((resolve, reject) => {
-                axios.post('/signin', formData)
+                axios.post('auth/signin', formData)
                     .then(response => {
                         alert('loginreq')
+                        console.log(response.data);
                         dispatch('loginSuccess', response.data);
                         resolve();
                     })
@@ -71,8 +72,9 @@ export const    actions = {
         },
 
         loginSuccess: ({commit, dispatch}, jwtTokenObj) => {
-            jwtToken.setToken(jwtTokenObj.token);
-            window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + jwtToken.getToken();
+            jwtToken.setToken(jwtTokenObj.access_token);
+            //window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + jwtToken.getToken();
+            window.axios.defaults.headers.common['Authorization'] = jwtTokenObj.token_type + ' ' + jwtToken.getToken();
             //jwtToken.setLoginTime(jwtTokenObj.loginTime);
             //window.axios.defaults.headers.common['LoginTime'] =  jwtToken.getloginTime();
            /* commit({
@@ -86,9 +88,11 @@ export const    actions = {
             dispatch('setAuthUser');
         },
     setAuthUser: ({commit, dispatch}) => {
-        axios.get('/current-user?include=roles')
+        //axios.get('/current-user?include=roles')
+        axios.post('auth/me')
             .then(response => {
-                console.log(response);
+                alert('authMe');
+                console.log(response.data);
                 commit({
                     type: types.SET_AUTH_USER,
                     user: response.data
