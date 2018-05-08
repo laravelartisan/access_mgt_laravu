@@ -170,7 +170,7 @@ exports.default = {
                 _this3.list.push(newRow);
                 _this3.dropDown.menus.push({
                     id: newRow.id,
-                    name: newRow.name
+                    name: newRow.menuName
                 });
                 _this3.resetForm();
             }).catch(function (error) {

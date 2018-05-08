@@ -211,7 +211,7 @@
                     this.list.push(newRow);
                     this.dropDown.menus.push({
                         id: newRow.id,
-                        name: newRow.name
+                        name: newRow.menuName
                     });
                     this.resetForm();
                 }).catch( error => {

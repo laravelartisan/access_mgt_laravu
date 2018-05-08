@@ -19,7 +19,7 @@ class MenuController extends Controller
      */
     public function index()
     {
-        return new MenuCollection(Menu::all());
+        return new MenuCollection(Menu::withTrashed()->get());
     }
 
     /**
@@ -38,12 +38,11 @@ class MenuController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Menu $menu)
+    public function store(Request $request)
     {
-        DB::transaction(function()use($request, $menu){
-            $menuNum = $menu->max('sequence');
-
-            $this->newRow = $menu->create([
+        DB::transaction(function()use($request){
+            $menuNum = Menu::withTrashed()->max('sequence');
+            $this->newRow = Menu::create([
                 'menu_name' => $request->menuName,
                 'module_id' => $request->module,
                 'parent_menu' => $request->parentMenu,

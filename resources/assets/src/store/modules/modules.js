@@ -31,5 +31,9 @@ export const     actions= {
 
             })
     },
+
+    getModulesByRole: ({commit, dispatch}) => {
+        
+    }
 }
 //}

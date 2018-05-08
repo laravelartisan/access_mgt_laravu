@@ -103,164 +103,153 @@ exports.push([module.i, "\n.menu-dropdown[data-v-5e5112aa]{\n    width: 14%;\n}\
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
+var _vuex = __webpack_require__(224);
 
 exports.default = {
-
+    computed: (0, _vuex.mapState)({
+        roles: function roles(state) {
+            return state.roles.list;
+        }
+    }),
     data: function data() {
         return {
-            menus: [{
-                name: 'Knit Garments',
-                id: 1,
-                children: [{
-                    name: 'Order Tracking',
-                    id: 2,
-                    children: [{ name: 'Sales Forecast Entry', id: 3 }, { name: 'Quotation Inquery', id: 4 }]
-                }, { name: 'Fabric Booking', id: 5 }, { name: 'Trims Booking', id: 6 }, { name: 'Service Booking', id: 7 }]
-            }, {
-                name: 'My Tree',
-                id: 8,
-                children: [{ name: 'hello', id: 9 }, { name: 'wat', id: 10 }, {
-                    name: 'child folder',
-                    id: 11,
-                    children: [{
-                        name: 'child folder',
-                        id: 12,
-                        children: [{ name: 'hello', id: 13 }, { name: 'wat', id: 14 }]
-                    }, { name: 'hello', id: 15 }, { name: 'wat', id: 16 }, {
-                        name: 'child folder',
-                        id: 17,
-                        children: [{ name: 'hello', id: 18 }, { name: 'wat', id: 19 }]
-                    }]
-                }, { name: 'Logic', id: 20 }, { name: 'Platform', id: 21 }]
-            }]
+            form: {
+                roleId: ''
+            }
 
         };
+    },
+
+    created: function created() {
+        this.$store.dispatch('roles/getRoles');
     }
-};
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 
@@ -294,24 +283,101 @@ var render = function() {
                   }
                 },
                 [
-                  _vm._m(0),
+                  _c("div", { staticClass: "card-body" }, [
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c("div", { staticClass: "col-lg-2" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass:
+                              "col-lg-12 col-form-label form-control-label"
+                          },
+                          [_vm._v("Role")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.roleId,
+                                expression: "form.roleId"
+                              }
+                            ],
+                            staticClass: "form-control form-control-sm",
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.form,
+                                  "roleId",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "option",
+                              { attrs: { value: "", disabled: "" } },
+                              [_vm._v("Select Role")]
+                            ),
+                            _vm._v(" "),
+                            _vm._l(_vm.roles, function(role, index) {
+                              return _c(
+                                "option",
+                                { domProps: { value: role.id } },
+                                [
+                                  _vm._v(
+                                    "\n                                                " +
+                                      _vm._s(role.name) +
+                                      "\n                                            "
+                                  )
+                                ]
+                              )
+                            })
+                          ],
+                          2
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(0),
+                      _vm._v(" "),
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _vm._m(2),
+                      _vm._v(" "),
+                      _vm._m(3)
+                    ])
+                  ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "card-body" }, [
                     _c(
                       "div",
                       { staticClass: "form-group row" },
                       [
-                        _vm._m(1),
+                        _vm._m(4),
                         _vm._v(" "),
                         void 0,
                         _vm._v(" "),
-                        _vm._m(2),
+                        _vm._m(5),
                         _vm._v(" "),
-                        _vm._m(3),
+                        _vm._m(6),
                         _vm._v(" "),
-                        _vm._m(4),
+                        _vm._m(7),
                         _vm._v(" "),
-                        _vm._m(5)
+                        _vm._m(8)
                       ],
                       2
                     )
@@ -355,81 +421,75 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-body" }, [
-      _c("div", { staticClass: "form-group row" }, [
-        _c("div", { staticClass: "col-lg-2" }, [
-          _c(
-            "label",
-            { staticClass: "col-lg-12 col-form-label form-control-label" },
-            [_vm._v("Role")]
-          ),
-          _vm._v(" "),
-          _c("select", { staticClass: "form-control form-control-sm" }, [
-            _c("option", { attrs: { value: "", disabled: "" } }, [
-              _vm._v("Select Role")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg-2" }, [
-          _c(
-            "label",
-            { staticClass: "col-lg-12 col-form-label form-control-label" },
-            [_vm._v("Module")]
-          ),
-          _vm._v(" "),
-          _c("select", { staticClass: "form-control form-control-sm" }, [
-            _c("option", { attrs: { value: "", disabled: "" } }, [
-              _vm._v("Select Module")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg-2" }, [
-          _c(
-            "label",
-            { staticClass: "col-lg-12 col-form-label form-control-label" },
-            [_vm._v("Copy From")]
-          ),
-          _vm._v(" "),
-          _c("select", { staticClass: "form-control form-control-sm" }, [
-            _c("option", { attrs: { value: "", disabled: "" } }, [
-              _vm._v("Select Role")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg-2" }, [
-          _c(
-            "label",
-            { staticClass: "col-lg-12 col-form-label form-control-label" },
-            [_vm._v("Inherit From")]
-          ),
-          _vm._v(" "),
-          _c("select", { staticClass: "form-control form-control-sm" }, [
-            _c("option", { attrs: { value: "", disabled: "" } }, [
-              _vm._v("Select Role")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg-2" }, [
-          _c(
-            "label",
-            { staticClass: "col-lg-12 col-form-label form-control-label" },
-            [_vm._v("Permission Level")]
-          ),
-          _vm._v(" "),
-          _c("select", { staticClass: "form-control form-control-sm" }, [
-            _c("option", { attrs: { value: "", disabled: "" } }, [
-              _vm._v("Select Role")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "" } }, [_vm._v("Selective")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "" } }, [_vm._v("Full")])
-          ])
+    return _c("div", { staticClass: "col-lg-2" }, [
+      _c(
+        "label",
+        { staticClass: "col-lg-12 col-form-label form-control-label" },
+        [_vm._v("Module")]
+      ),
+      _vm._v(" "),
+      _c("select", { staticClass: "form-control form-control-sm" }, [
+        _c("option", { attrs: { value: "", disabled: "" } }, [
+          _vm._v("Select Module")
         ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-2" }, [
+      _c(
+        "label",
+        { staticClass: "col-lg-12 col-form-label form-control-label" },
+        [_vm._v("Copy From")]
+      ),
+      _vm._v(" "),
+      _c("select", { staticClass: "form-control form-control-sm" }, [
+        _c("option", { attrs: { value: "", disabled: "" } }, [
+          _vm._v("Select Role")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-2" }, [
+      _c(
+        "label",
+        { staticClass: "col-lg-12 col-form-label form-control-label" },
+        [_vm._v("Inherit From")]
+      ),
+      _vm._v(" "),
+      _c("select", { staticClass: "form-control form-control-sm" }, [
+        _c("option", { attrs: { value: "", disabled: "" } }, [
+          _vm._v("Select Role")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-2" }, [
+      _c(
+        "label",
+        { staticClass: "col-lg-12 col-form-label form-control-label" },
+        [_vm._v("Permission Level")]
+      ),
+      _vm._v(" "),
+      _c("select", { staticClass: "form-control form-control-sm" }, [
+        _c("option", { attrs: { value: "", disabled: "" } }, [
+          _vm._v("Select Role")
+        ]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "" } }, [_vm._v("Selective")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "" } }, [_vm._v("Full")])
       ])
     ])
   },
