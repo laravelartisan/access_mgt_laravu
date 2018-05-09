@@ -12,7 +12,7 @@ export const    mutations = {
         payload.menus.forEach( menu => {
             state.list.push({
                 id: menu.id,
-                name: menu.name
+                name: menu.menuName
             });
         });
     },
@@ -31,5 +31,44 @@ export const     actions= {
 
             })
     },
+
+    getMenusByModule: ({commit, dispatch}, moduleId) => {
+        return new Promise((resolve, reject) => {
+            axios.get('/menus/'+ moduleId + '/module').then( response => {
+                var menusByModule = [];
+                response.data.data.forEach( menu => {
+                    menusByModule.push({
+                        id: menu.id,
+                        name: menu.menuName
+                    });
+                });
+                resolve(menusByModule);
+            }).catch(error => {
+                //console.log(error.response.data);
+                reject();
+            });
+
+        });
+
+    },
+
+    getStoreChildrenMenus: ({commit, dispatch}, parentMenuId) => {
+        return new Promise((resolve, reject) => {
+            axios.get('/menus/'+ parentMenuId + '/childrenMenus').then( response => {
+                var childrenMenus = [];
+                response.data.data.forEach( menu => {
+                    childrenMenus.push({
+                        id: menu.id,
+                        name: menu.menuName
+                    });
+                });
+                resolve(childrenMenus);
+            }).catch(error => {
+                //console.log(error.response.data);
+                reject();
+            });
+
+        });
+    }
 }
 //}

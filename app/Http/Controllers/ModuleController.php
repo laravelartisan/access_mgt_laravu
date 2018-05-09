@@ -106,5 +106,10 @@ class ModuleController extends Controller
         //
     }
 
+    public function getModulesByRole($roleId)
+    {
+
+    }
+
 
 }

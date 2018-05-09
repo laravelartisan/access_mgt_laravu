@@ -32,8 +32,18 @@ export const     actions= {
             })
     },
 
-    getModulesByRole: ({commit, dispatch}) => {
-        
+    getModulesByRole: ({commit, dispatch}, roleId) => {
+        axios.get('/modules/'+ roleId + '/role')
+            .then(response => {
+
+                commit({
+                    type: types.MODULES_LIST,
+                    modules: response.data.data
+                })
+            })
+            .catch(error => {
+
+            })
     }
 }
 //}

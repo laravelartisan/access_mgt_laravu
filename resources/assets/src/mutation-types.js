@@ -22,3 +22,4 @@ export const HIDE_ALL_NOTIFICATION = 'HIDE_ALL_NOTIFICATION';
 export const ROLES_LIST = 'ROLES_LIST';
 export const MODULES_LIST = 'MODULES_LIST';
 export const MENUS_LIST = 'MENUS_LIST';
+export const MENUS_BY_MODULE = 'MENUS_BY_MODULE';

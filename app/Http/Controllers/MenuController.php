@@ -19,7 +19,8 @@ class MenuController extends Controller
      */
     public function index()
     {
-        return new MenuCollection(Menu::withTrashed()->get());
+//        return new MenuCollection(Menu::withTrashed()->get());
+        return new MenuCollection(Menu::all());
     }
 
     /**
@@ -121,5 +122,10 @@ class MenuController extends Controller
             $menus = Menu::whereModuleId($module)->get();
         }
         return new MenuCollection($menus);
+    }
+
+    public function getChildrenMenus($parentMenuid)
+    {
+        return new MenuCollection(Menu::whereParentMenu($parentMenuid)->get());
     }
 }

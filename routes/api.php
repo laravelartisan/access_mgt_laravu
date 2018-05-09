@@ -31,5 +31,7 @@ Route::apiResource('modules', 'ModuleController');
 Route::apiResource('menus', 'MenuController');
 
 Route::get('menus/{module}/module/{excludableMenu?}', 'MenuController@getMenusByModule');
+Route::get('menus/{parentMenuId}/childrenMenus', 'MenuController@getChildrenMenus');
+Route::get('modules/{roleId}/role', 'ModuleController@getModulesByRole');
 
 
